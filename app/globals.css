@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8ed;
+  --background: #f6f8f4;
   --foreground: #1b1c1a;
 }
 
@@ -20,23 +20,14 @@ body {
 
 .research-page {
   background:
-    linear-gradient(180deg, #fff6dc 0%, #eef8f2 35%, #fbf8ed 100%);
+    linear-gradient(180deg, #eef6f0 0%, #f6f8f4 48%, #f8faf6 100%);
 }
 
 .research-hero {
   background:
-    linear-gradient(rgba(255, 246, 220, 0.92), rgba(232, 246, 237, 0.92)),
-    radial-gradient(circle at 12px 12px, rgba(23, 111, 91, 0.14) 1px, transparent 1.5px);
+    linear-gradient(rgba(238, 246, 240, 0.96), rgba(246, 248, 244, 0.96)),
+    radial-gradient(circle at 12px 12px, rgba(23, 111, 91, 0.07) 1px, transparent 1.5px);
   background-size: auto, 24px 24px;
-}
-
-.spark-tile {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  border: 2px solid rgba(24, 33, 28, 0.1);
-  border-radius: 0.45rem;
-  box-shadow: 4px 4px 0 #ffffff, 7px 7px 0 rgba(23, 111, 91, 0.16);
 }
 
 .nes-title {

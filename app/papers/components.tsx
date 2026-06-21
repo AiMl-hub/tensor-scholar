@@ -118,7 +118,7 @@ export function SearchPanel({
   windowPreset,
 }: SearchPanelProps) {
   return (
-    <section className="research-hero border-b border-[#d7caa7]">
+    <section className="research-hero border-b border-[#cdd8cf]">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-7 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -141,13 +141,6 @@ export function SearchPanel({
             <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#526157]">
               Find the papers that make your next idea click.
             </p>
-          </div>
-          <div className="hidden items-end gap-2 md:flex" aria-hidden="true">
-            <span className="spark-tile bg-[#176f5b]" />
-            <span className="spark-tile h-9 bg-[#8bd9c5]" />
-            <span className="spark-tile bg-[#f4bd5e]" />
-            <span className="spark-tile h-7 bg-[#62b8d4]" />
-            <span className="spark-tile bg-[#e88ca8]" />
           </div>
         </div>
 
@@ -180,7 +173,7 @@ export function SearchPanel({
             />
           </div>
           <button
-            className="h-12 rounded-xl bg-[#176f5b] px-6 font-semibold text-white shadow-[4px_4px_0_#f4bd5e] transition hover:-translate-y-0.5 hover:bg-[#115744] hover:shadow-[5px_5px_0_#f4bd5e] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
+            className="h-12 rounded-xl bg-[#176f5b] px-6 font-semibold text-white shadow-[4px_4px_0_#bfded1] transition hover:-translate-y-0.5 hover:bg-[#115744] hover:shadow-[5px_5px_0_#bfded1] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
             disabled={status === "loading"}
             type="submit"
           >
@@ -238,7 +231,7 @@ export function SourceSidebar({
   selectedVenuesCount,
 }: SourceSidebarProps) {
   return (
-    <aside className="h-fit rounded-xl border border-[#d8dccd] bg-[#fffdf6] p-4 shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <aside className="h-fit rounded-xl border border-[#d8dccd] bg-[#fbfdf9] p-4 shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-sm font-semibold uppercase text-[#46534a]">Sources</h2>
@@ -349,7 +342,7 @@ export function ResultsToolbar({
         : "Ready for a paper trail";
 
   return (
-    <div className="mb-4 rounded-xl border border-[#d8dccd] bg-[#fffdf6] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <div className="mb-4 rounded-xl border border-[#d8dccd] bg-[#fbfdf9] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
       <div className="flex flex-col gap-3 p-3 lg:flex-row lg:items-center lg:justify-between">
         <p className="text-sm font-semibold text-[#25302a]">{statusText}</p>
         <SegmentedControl<SortMode>
@@ -534,7 +527,7 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
 
       {highlight ? (
         <div className="mt-3 rounded-lg border border-[#c7ded3] bg-[#f4fbf5] px-3 py-2 shadow-[inset_3px_0_0_#9edfd0]">
-          <p className="text-[10px] font-semibold uppercase text-[#176f5b]">Paper spark</p>
+          <p className="text-[10px] font-semibold uppercase text-[#176f5b]">Highlight</p>
           <p className="mt-1 text-sm leading-6 text-[#26352d]">
             <HighlightedText query={query} text={highlight} />
           </p>
@@ -561,7 +554,7 @@ export function LoadingState() {
 
 export function EmptyState() {
   return (
-    <div className="rounded-xl border border-[#d8dccd] bg-[#fffdf6] p-6 text-sm text-[#4f5b54] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <div className="rounded-xl border border-[#d8dccd] bg-[#fbfdf9] p-6 text-sm text-[#4f5b54] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
       No papers surfaced yet for this trail. Try a wider source mix or a softer keyword.
     </div>
   );
@@ -577,7 +570,7 @@ export function ErrorState({ message }: { message: string }) {
 
 export function AppFooter() {
   return (
-    <footer className="border-t border-[#d7caa7] bg-[#fff4d8]">
+    <footer className="border-t border-[#cdd8cf] bg-[#eef5ef]">
       <div className="nes-title mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-[#18211c] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <p>Copyright 2026 Mai A. Shaaban</p>
         <div className="flex flex-wrap gap-3">
