@@ -77,6 +77,12 @@ const SORT_OPTIONS: Array<{ value: SortMode; label: string }> = [
   { value: "citations", label: "Citations" },
 ];
 
+const EXPORT_OPTIONS: Array<{ value: ExportFormat; label: string }> = [
+  { value: "bibtex", label: "BibTeX" },
+  { value: "ris", label: "Zotero/Mendeley" },
+  { value: "csv", label: "CSV" },
+];
+
 const WINDOW_PRESETS: Array<{
   value: Exclude<DateWindowPreset, "custom">;
   label: string;
@@ -120,6 +126,7 @@ export default function PaperSearchApp() {
   const [selectedPaperIds, setSelectedPaperIds] = useState<Set<string>>(() => new Set());
   const [pageSize, setPageSize] = useState<PageSize>(10);
   const [maxResults, setMaxResults] = useState<ResultLimit>(100);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>("bibtex");
   const [currentPage, setCurrentPage] = useState(1);
   const [meta, setMeta] = useState<SearchMeta | null>(null);
   const [status, setStatus] = useState<Status>("idle");
@@ -527,7 +534,9 @@ export default function PaperSearchApp() {
             <SelectionToolbar
               onClear={clearSelection}
               onExport={exportSelected}
+              onExportFormatChange={setExportFormat}
               onSelectAll={selectAllVisiblePapers}
+              exportFormat={exportFormat}
               selectedCount={selectedPapers.length}
               totalCount={visiblePapers.length}
             />
@@ -833,14 +842,18 @@ function PaginationControls({
 }
 
 function SelectionToolbar({
+  exportFormat,
   onClear,
   onExport,
+  onExportFormatChange,
   onSelectAll,
   selectedCount,
   totalCount,
 }: {
+  exportFormat: ExportFormat;
   onClear: () => void;
   onExport: (format: ExportFormat) => void;
+  onExportFormatChange: (format: ExportFormat) => void;
   onSelectAll: () => void;
   selectedCount: number;
   totalCount: number;
@@ -872,29 +885,28 @@ function SelectionToolbar({
           >
             Clear
           </button>
+          <label className="flex items-center gap-2 text-sm font-semibold text-[#405047]" htmlFor="export-format">
+            Export as
+            <select
+              className="h-10 rounded-md border border-[#c8d3cc] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+              id="export-format"
+              onChange={(event) => onExportFormatChange(event.target.value as ExportFormat)}
+              value={exportFormat}
+            >
+              {EXPORT_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
           <button
             className="min-h-10 rounded-md bg-[#176f5b] px-3 text-sm font-semibold text-white transition hover:bg-[#115744] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
             disabled={!hasSelection}
-            onClick={() => onExport("bibtex")}
+            onClick={() => onExport(exportFormat)}
             type="button"
           >
-            BibTeX
-          </button>
-          <button
-            className="min-h-10 rounded-md bg-[#176f5b] px-3 text-sm font-semibold text-white transition hover:bg-[#115744] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
-            disabled={!hasSelection}
-            onClick={() => onExport("ris")}
-            type="button"
-          >
-            Zotero/Mendeley
-          </button>
-          <button
-            className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b] disabled:cursor-not-allowed disabled:opacity-45"
-            disabled={!hasSelection}
-            onClick={() => onExport("csv")}
-            type="button"
-          >
-            CSV
+            Export
           </button>
         </div>
       </div>
