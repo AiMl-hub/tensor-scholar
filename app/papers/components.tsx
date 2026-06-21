@@ -87,7 +87,7 @@ const AREA_RAIL_STYLES: Record<VenueArea, string> = {
 };
 
 const CATEGORY_ACTION_CLASS =
-  "rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] transition hover:bg-[#fff6db] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f] disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-[#9aa69f]";
+  "rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] transition hover:bg-[#eef8f2] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f] disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-[#9aa69f]";
 
 export function SearchPanel({
   excludeKeywords,
@@ -182,7 +182,7 @@ export function SearchPanel({
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
               <button
-                className="rounded-lg border border-[#b8c7be] bg-white px-3 py-2 text-sm font-semibold text-[#344139] shadow-[2px_2px_0_#d9e4dd] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#fff6db] hover:text-[#176f5b]"
+                className="rounded-lg border border-[#b8c7be] bg-white px-3 py-2 text-sm font-semibold text-[#344139] shadow-[2px_2px_0_#d9e4dd] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#eef8f2] hover:text-[#176f5b]"
                 key={sample}
                 onClick={() => onSampleQuery(sample)}
                 type="button"
@@ -217,7 +217,7 @@ export function SourceSidebar({
         </div>
         <div className="flex gap-2">
           <button
-            className="rounded-md border border-[#cbd6d0] bg-white px-2 py-1 text-xs font-semibold text-[#47534c] shadow-[2px_2px_0_#edf3ef] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#fff6db] hover:text-[#176f5b]"
+            className="rounded-md border border-[#cbd6d0] bg-white px-2 py-1 text-xs font-semibold text-[#47534c] shadow-[2px_2px_0_#edf3ef] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#eef8f2] hover:text-[#176f5b]"
             onClick={onResetVenues}
             type="button"
           >
@@ -275,7 +275,7 @@ export function SourceSidebar({
                         "rounded-md border px-2.5 py-1.5 text-xs font-semibold transition hover:-translate-y-0.5",
                         active
                           ? `${AREA_STYLES[venue.area]} shadow-[2px_2px_0_rgba(23,111,91,0.16)]`
-                          : "border-[#d6ddd8] bg-[#fafbf8] text-[#626d66] hover:border-[#176f5b] hover:bg-[#fff6db]",
+                          : "border-[#d6ddd8] bg-[#fafbf8] text-[#626d66] hover:border-[#176f5b] hover:bg-[#eef8f2]",
                       ].join(" ")}
                       key={venue.key}
                       onClick={() => onToggleVenue(venue.key)}
@@ -365,7 +365,7 @@ export function ResultsToolbar({
 
               <div className="grid grid-cols-[auto_1fr_auto] items-center overflow-hidden rounded-md border border-[#c8d3cc] bg-white">
                 <button
-                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#fff6db] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef8f2] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
                   disabled={currentPage <= 1}
                   onClick={() => onPageChange(currentPage - 1)}
                   type="button"
@@ -376,7 +376,7 @@ export function ResultsToolbar({
                   {currentPage}/{pageCount}
                 </span>
                 <button
-                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#fff6db] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef8f2] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
                   disabled={currentPage >= pageCount}
                   onClick={() => onPageChange(currentPage + 1)}
                   type="button"
@@ -387,7 +387,7 @@ export function ResultsToolbar({
 
               <button
                 aria-label={`Select all ${visibleCount} papers on this page`}
-                className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b] hover:bg-[#fff6db]"
+                className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b] hover:bg-[#eef8f2]"
                 onClick={onSelectAll}
                 type="button"
               >
@@ -396,7 +396,7 @@ export function ResultsToolbar({
               {hasSelection ? (
                 <>
                   <button
-                    className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#5d6962] transition hover:border-[#176f5b] hover:bg-[#fff6db] hover:text-[#176f5b]"
+                    className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#5d6962] transition hover:border-[#176f5b] hover:bg-[#eef8f2] hover:text-[#176f5b]"
                     onClick={onClear}
                     type="button"
                   >
@@ -415,7 +415,7 @@ export function ResultsToolbar({
                     <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#c8d3cc] bg-white shadow-lg">
                       {EXPORT_OPTIONS.map((option) => (
                         <button
-                          className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#fff6db] hover:text-[#176f5b]"
+                          className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#eef8f2] hover:text-[#176f5b]"
                           key={option.value}
                           onClick={(event) => {
                             onExport(option.value);
@@ -686,7 +686,7 @@ function SegmentedControl<T extends string>({
             className={[
               "min-h-10 min-w-0 flex-1 truncate whitespace-nowrap px-2.5 text-sm font-semibold transition sm:px-3",
               buttonWidthClass,
-              active ? "bg-[#1d6f5c] text-white" : "text-[#405047] hover:bg-[#fff6db]",
+              active ? "bg-[#1d6f5c] text-white" : "text-[#405047] hover:bg-[#eef8f2]",
             ].join(" ")}
             key={option.value}
             onClick={() => onChange(option.value)}
