@@ -2,20 +2,14 @@
   <rect x="5" y="5" width="54" height="54" rx="15" fill="#F7FCF8"/>
   <rect x="5" y="5" width="54" height="54" rx="15" stroke="#176F5B" stroke-width="3"/>
 
-  <path d="M18 37H46M18 48H46M21.5 33.5V56M32 33.5V56M42.5 33.5V56" stroke="#A9E7D3" stroke-width="2.5" stroke-linecap="round"/>
-  <rect x="17" y="29" width="9" height="9" rx="2.5" fill="#176F5B"/>
-  <rect x="27.5" y="29" width="9" height="9" rx="2.5" fill="#1D8A6C"/>
-  <rect x="38" y="29" width="9" height="9" rx="2.5" fill="#93D7C0"/>
-  <rect x="17" y="40" width="9" height="9" rx="2.5" fill="#1D8A6C"/>
-  <rect x="27.5" y="40" width="9" height="9" rx="2.5" fill="#93D7C0"/>
-  <rect x="38" y="40" width="9" height="9" rx="2.5" fill="#176F5B"/>
-  <rect x="17" y="51" width="9" height="9" rx="2.5" fill="#93D7C0"/>
-  <rect x="27.5" y="51" width="9" height="9" rx="2.5" fill="#176F5B"/>
-  <rect x="38" y="51" width="9" height="9" rx="2.5" fill="#1D8A6C"/>
+  <path d="M22 34C27.8 37.4 36.2 37.4 42 34V44.5C36.2 48.6 27.8 48.6 22 44.5V34Z" fill="#176F5B" stroke="#15251D" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M25.5 38C29.8 39.5 34.2 39.5 38.5 38" stroke="#93D7C0" stroke-width="2.4" stroke-linecap="round"/>
 
-  <path d="M14 21.5L32 11L50 21.5L32 32L14 21.5Z" fill="#15251D"/>
-  <path d="M21.5 25.5C26.8 28.4 37.2 28.4 42.5 25.5V31.2C37.2 34.2 26.8 34.2 21.5 31.2V25.5Z" fill="#176F5B"/>
-  <path d="M32 11L50 21.5L32 32L14 21.5L32 11Z" stroke="#15251D" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M47 23V34" stroke="#15251D" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="47" cy="36.5" r="3" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
+  <path d="M32 12L42 18L32 24L22 18L32 12Z" fill="#176F5B" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M22 18L32 24L22 30L12 24L22 18Z" fill="#1D8A6C" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M42 18L52 24L42 30L32 24L42 18Z" fill="#93D7C0" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M32 24L42 30L32 36L22 30L32 24Z" fill="#DDF7EF" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+
+  <path d="M52 24V39" stroke="#15251D" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="52" cy="42.5" r="3.2" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
 </svg>
