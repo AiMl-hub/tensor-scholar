@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://tensorscholar.vercel.app/sitemap.xml
+Host: https://tensorscholar.vercel.app

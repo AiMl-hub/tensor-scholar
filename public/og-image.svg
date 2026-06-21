@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F7FCF8"/>
+  <path d="M0 0H1200V630H0V0Z" fill="url(#grid)"/>
+  <rect x="72" y="72" width="1056" height="486" rx="36" fill="#FFFFFF" stroke="#B8C7BE" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="486" rx="36" fill="url(#soft)"/>
+
+  <g transform="translate(126 145) scale(3.1)">
+    <defs>
+      <clipPath id="tensor-head-og">
+        <rect x="20" y="28" width="24" height="24" rx="11"/>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#tensor-head-og)">
+      <rect x="20" y="28" width="24" height="24" fill="#DDF7EF"/>
+      <rect x="20" y="28" width="8" height="8" fill="#176F5B"/>
+      <rect x="28" y="28" width="8" height="8" fill="#93D7C0"/>
+      <rect x="36" y="28" width="8" height="8" fill="#DDF7EF"/>
+      <rect x="20" y="36" width="8" height="8" fill="#93D7C0"/>
+      <rect x="28" y="36" width="8" height="8" fill="#1D8A6C"/>
+      <rect x="36" y="36" width="8" height="8" fill="#176F5B"/>
+      <rect x="20" y="44" width="8" height="8" fill="#DDF7EF"/>
+      <rect x="28" y="44" width="8" height="8" fill="#176F5B"/>
+      <rect x="36" y="44" width="8" height="8" fill="#93D7C0"/>
+      <path d="M28 28V52M36 28V52M20 36H44M20 44H44" stroke="#F7FCF8" stroke-width="2.1"/>
+    </g>
+    <rect x="20" y="28" width="24" height="24" rx="11" stroke="#15251D" stroke-width="2.6"/>
+    <path d="M14 23L32 12L50 23L32 34L14 23Z" fill="#15251D" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M23 28C27.8 30.7 36.2 30.7 41 28V33C36.2 35.8 27.8 35.8 23 33V28Z" fill="#176F5B" stroke="#15251D" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M48 24V39" stroke="#15251D" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="48" cy="42" r="3" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
+  </g>
+
+  <text x="330" y="210" fill="#15251D" font-family="Courier New, monospace" font-size="76" font-weight="700">
+    Tensor Scholar
+  </text>
+  <rect x="335" y="232" width="610" height="14" rx="7" fill="#93D7C0" fill-opacity="0.7"/>
+  <text x="335" y="310" fill="#176F5B" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">
+    Search top AI conference papers
+  </text>
+  <text x="335" y="368" fill="#405047" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Curated venues. Hybrid ranking. Highlights. BibTeX export.
+  </text>
+
+  <g transform="translate(335 425)">
+    <rect width="138" height="56" rx="16" fill="#EEF8F2" stroke="#B8C7BE" stroke-width="2"/>
+    <text x="28" y="36" fill="#176F5B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">NeurIPS</text>
+    <rect x="158" width="102" height="56" rx="16" fill="#EEF8F2" stroke="#B8C7BE" stroke-width="2"/>
+    <text x="190" y="36" fill="#176F5B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CVPR</text>
+    <rect x="280" width="82" height="56" rx="16" fill="#EEF8F2" stroke="#B8C7BE" stroke-width="2"/>
+    <text x="307" y="36" fill="#176F5B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">ACL</text>
+    <rect x="382" width="126" height="56" rx="16" fill="#EEF8F2" stroke="#B8C7BE" stroke-width="2"/>
+    <text x="412" y="36" fill="#176F5B" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">MICCAI</text>
+  </g>
+
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.5" fill="#176F5B" fill-opacity="0.07"/>
+    </pattern>
+    <linearGradient id="soft" x1="72" y1="72" x2="1128" y2="558" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF8F2" stop-opacity="0.82"/>
+      <stop offset="0.52" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#DDF7EF" stop-opacity="0.58"/>
+    </linearGradient>
+  </defs>
+</svg>
