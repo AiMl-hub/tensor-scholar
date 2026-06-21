@@ -74,6 +74,10 @@ type PaperDigestRecord = {
   venue: Venue;
 };
 
+type SemanticScholarSearchOptions = {
+  venue?: Venue;
+};
+
 const FIELD_WEIGHTS: Record<SearchField, Record<"title" | "abstract" | "author", number>> = {
   all: { title: 4.2, abstract: 2.4, author: 2.8 },
   title: { title: 6.4, abstract: 0.4, author: 0.2 },
@@ -116,7 +120,6 @@ const PAPER_DIGEST_TOPICS: Partial<Record<string, string>> = {
   iccv: "iccv",
   eccv: "eccv",
   wacv: "wacv",
-  miccai: "miccai",
   acl: "acl",
   emnlp: "emnlp",
   naacl: "naacl",
@@ -131,6 +134,9 @@ const OPENALEX_MAX_PAGES = 5;
 const SEMANTIC_SCHOLAR_PAGE_SIZE = 100;
 const SEMANTIC_SCHOLAR_MAX_PAGES = 10;
 const SEMANTIC_SCHOLAR_ENRICHMENT_LIMIT = 50;
+const SEMANTIC_SCHOLAR_FALLBACK_MIN_RESULTS = 25;
+const SEMANTIC_SCHOLAR_VENUE_FALLBACK_LIMIT = 4;
+const SEMANTIC_SCHOLAR_VENUE_CONCURRENCY = 2;
 const CANDIDATE_TARGET_MULTIPLIER = 2;
 
 export async function GET(request: Request) {
@@ -206,15 +212,41 @@ export async function GET(request: Request) {
     errors.push(getUpstreamError(paperDigestResult.reason, "Paper Digest"));
   }
 
-  const enrichedPapers = await enrichPapersWithSemanticScholar(
-    dedupePapers(collected),
-    query,
-    field,
-    venues,
-    fromDate,
-    toDate,
-    yearRange,
-  );
+  let candidatePapers = dedupePapers(collected);
+  let semanticScholarAttempted = false;
+
+  if (shouldSearchSemanticScholarFallback(candidatePapers.length, limit)) {
+    semanticScholarAttempted = true;
+    try {
+      const semanticScholarCandidates = await searchSemanticScholarFallback(
+        query,
+        yearRange,
+        venues,
+        limit,
+      );
+      const normalizedSemanticScholarPapers = semanticScholarCandidates
+        .map((paper) => normalizePaper(paper, query, field, venues, fromDate, toDate))
+        .filter((paper): paper is Paper => Boolean(paper));
+
+      if (normalizedSemanticScholarPapers.length) {
+        candidatePapers = dedupePapers([...candidatePapers, ...normalizedSemanticScholarPapers]);
+      }
+    } catch (reason) {
+      errors.push(getUpstreamError(reason, "Semantic Scholar"));
+    }
+  }
+
+  const enrichedPapers = semanticScholarAttempted
+    ? candidatePapers
+    : await enrichPapersWithSemanticScholar(
+        candidatePapers,
+        query,
+        field,
+        venues,
+        fromDate,
+        toDate,
+        yearRange,
+      );
   const mergedPapers = enrichedPapers
     .filter((paper) => matchesKeywordFilters(paper, includeKeywords, excludeKeywords))
     .map((paper) => ({
@@ -392,6 +424,7 @@ async function searchSemanticScholar(
   query: string,
   yearRange: string,
   resultLimit: number,
+  options: SemanticScholarSearchOptions = {},
 ): Promise<SemanticScholarPaper[]> {
   const headers: Record<string, string> = { Accept: "application/json" };
   const apiKey = getEnvValue("SEMANTIC_SCHOLAR_API_KEY");
@@ -413,6 +446,9 @@ async function searchSemanticScholar(
     searchUrl.searchParams.set("year", yearRange);
     searchUrl.searchParams.set("limit", String(SEMANTIC_SCHOLAR_PAGE_SIZE));
     searchUrl.searchParams.set("offset", String(offset));
+    if (options.venue) {
+      searchUrl.searchParams.set("venue", options.venue.label);
+    }
     searchUrl.searchParams.set(
       "fields",
       [
@@ -460,6 +496,28 @@ async function searchSemanticScholar(
   }
 
   return papers.slice(0, targetCount);
+}
+
+async function searchSemanticScholarFallback(
+  query: string,
+  yearRange: string,
+  venues: Venue[],
+  resultLimit: number,
+) {
+  if (venues.length > 0 && venues.length <= SEMANTIC_SCHOLAR_VENUE_FALLBACK_LIMIT) {
+    const perVenueLimit = Math.max(20, Math.ceil(resultLimit / venues.length));
+    return runLimited(
+      venues,
+      SEMANTIC_SCHOLAR_VENUE_CONCURRENCY,
+      (venue) => searchSemanticScholar(query, yearRange, perVenueLimit, { venue }),
+    );
+  }
+
+  return searchSemanticScholar(query, yearRange, resultLimit);
+}
+
+function shouldSearchSemanticScholarFallback(candidateCount: number, resultLimit: number) {
+  return candidateCount < Math.min(resultLimit, SEMANTIC_SCHOLAR_FALLBACK_MIN_RESULTS);
 }
 
 async function searchPaperDigest(
