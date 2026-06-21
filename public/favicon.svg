@@ -1,35 +1,33 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <clipPath id="tensor-head">
-      <rect x="22" y="30" width="20" height="20" rx="8"/>
+      <rect x="20" y="28" width="24" height="24" rx="11"/>
     </clipPath>
   </defs>
 
   <rect x="5" y="5" width="54" height="54" rx="15" fill="#F7FCF8"/>
   <rect x="5" y="5" width="54" height="54" rx="15" stroke="#176F5B" stroke-width="3"/>
-  <circle cx="32" cy="33" r="24" fill="#EAF8F2" stroke="#93D7C0" stroke-width="2.5"/>
-
-  <path d="M15 23L32 13L49 23L32 33L15 23Z" fill="#15251D" stroke="#15251D" stroke-width="2.3" stroke-linejoin="round"/>
-  <path d="M23.5 27.2C28 29.7 36 29.7 40.5 27.2V32.5C36 35.2 28 35.2 23.5 32.5V27.2Z" fill="#176F5B" stroke="#15251D" stroke-width="2.2" stroke-linejoin="round"/>
+  <circle cx="32" cy="33" r="23" fill="#EAF8F2" stroke="#93D7C0" stroke-width="2.5"/>
 
   <g clip-path="url(#tensor-head)">
-    <rect x="22" y="30" width="20" height="20" fill="#DDF7EF"/>
-    <rect x="22" y="30" width="6.7" height="6.7" fill="#176F5B"/>
-    <rect x="28.7" y="30" width="6.6" height="6.7" fill="#93D7C0"/>
-    <rect x="35.3" y="30" width="6.7" height="6.7" fill="#DDF7EF"/>
-    <rect x="22" y="36.7" width="6.7" height="6.6" fill="#93D7C0"/>
-    <rect x="28.7" y="36.7" width="6.6" height="6.6" fill="#1D8A6C"/>
-    <rect x="35.3" y="36.7" width="6.7" height="6.6" fill="#176F5B"/>
-    <rect x="22" y="43.3" width="6.7" height="6.7" fill="#DDF7EF"/>
-    <rect x="28.7" y="43.3" width="6.6" height="6.7" fill="#176F5B"/>
-    <rect x="35.3" y="43.3" width="6.7" height="6.7" fill="#93D7C0"/>
-    <path d="M28.7 30V50M35.3 30V50M22 36.7H42M22 43.3H42" stroke="#F7FCF8" stroke-width="1.7"/>
+    <rect x="20" y="28" width="24" height="24" fill="#DDF7EF"/>
+    <rect x="20" y="28" width="8" height="8" fill="#176F5B"/>
+    <rect x="28" y="28" width="8" height="8" fill="#93D7C0"/>
+    <rect x="36" y="28" width="8" height="8" fill="#DDF7EF"/>
+    <rect x="20" y="36" width="8" height="8" fill="#93D7C0"/>
+    <rect x="28" y="36" width="8" height="8" fill="#1D8A6C"/>
+    <rect x="36" y="36" width="8" height="8" fill="#176F5B"/>
+    <rect x="20" y="44" width="8" height="8" fill="#DDF7EF"/>
+    <rect x="28" y="44" width="8" height="8" fill="#176F5B"/>
+    <rect x="36" y="44" width="8" height="8" fill="#93D7C0"/>
+    <path d="M28 28V52M36 28V52M20 36H44M20 44H44" stroke="#F7FCF8" stroke-width="2.1"/>
   </g>
-  <rect x="22" y="30" width="20" height="20" rx="8" stroke="#15251D" stroke-width="2.5"/>
+  <rect x="20" y="28" width="24" height="24" rx="11" stroke="#15251D" stroke-width="2.6"/>
 
-  <path d="M21 53C22.6 47.6 26.6 44.8 32 44.8C37.4 44.8 41.4 47.6 43 53H21Z" fill="#F7FCF8" stroke="#15251D" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M27 47.7V53M37 47.7V53" stroke="#1D8A6C" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M14 23L32 12L50 23L32 34L14 23Z" fill="#15251D" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M23 28C27.8 30.7 36.2 30.7 41 28V33C36.2 35.8 27.8 35.8 23 33V28Z" fill="#176F5B" stroke="#15251D" stroke-width="2.2" stroke-linejoin="round"/>
 
-  <path d="M48 24V38.5" stroke="#15251D" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="48" cy="41.5" r="3.1" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
+  <path d="M22 54C23.8 49.6 27.4 47.3 32 47.3C36.6 47.3 40.2 49.6 42 54H22Z" fill="#F7FCF8" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M48 24V39" stroke="#15251D" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="48" cy="42" r="3" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
 </svg>
