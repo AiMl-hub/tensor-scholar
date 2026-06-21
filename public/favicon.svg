@@ -1,26 +1,26 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#shell)" stroke="#E6E0EE" stroke-width="2"/>
-  <path d="M18 22L10 32L18 42" stroke="#6D4BC3" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#shell)" stroke="#D7E7DC" stroke-width="2"/>
+  <path d="M18 22L10 32L18 42" stroke="#176F5B" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M46 22L54 32L46 42" stroke="#2F8F73" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M21 10H40L49 19V54H21C18.8 54 17 52.2 17 50V14C17 11.8 18.8 10 21 10Z" fill="#FFFFFF" stroke="#D8CCFF" stroke-width="2.4"/>
-  <path d="M40 10V19H49" fill="#F5F1FF"/>
-  <path d="M40 10V19H49" stroke="#D8CCFF" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M21 10H40L49 19V54H21C18.8 54 17 52.2 17 50V14C17 11.8 18.8 10 21 10Z" fill="#FFFFFF" stroke="#B8EADC" stroke-width="2.4"/>
+  <path d="M40 10V19H49" fill="#F5FBF7"/>
+  <path d="M40 10V19H49" stroke="#B8EADC" stroke-width="2.4" stroke-linejoin="round"/>
   <path d="M28 27L40 27L45 39L36 50L24 43L28 27Z" stroke="url(#tensorLine)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M28 27L36 50M40 27L24 43M45 39L28 27" stroke="#D4F2E7" stroke-width="2.2" stroke-linecap="round"/>
-  <circle cx="28" cy="27" r="5" fill="#6D4BC3"/>
-  <circle cx="40" cy="27" r="5" fill="#A996E8"/>
+  <circle cx="28" cy="27" r="5" fill="#176F5B"/>
+  <circle cx="40" cy="27" r="5" fill="#55B69B"/>
   <circle cx="45" cy="39" r="5" fill="#2F8F73"/>
   <circle cx="36" cy="50" r="5" fill="#8CE0C9"/>
-  <circle cx="24" cy="43" r="5" fill="#6D4BC3"/>
+  <circle cx="24" cy="43" r="5" fill="#176F5B"/>
   <path d="M24 18H34" stroke="#BFEFDF" stroke-width="2.8" stroke-linecap="round"/>
   <defs>
     <linearGradient id="shell" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FBF9FF"/>
+      <stop stop-color="#F7FCF8"/>
       <stop offset="0.48" stop-color="#FFFFFF"/>
       <stop offset="1" stop-color="#F7FCF8"/>
     </linearGradient>
     <linearGradient id="tensorLine" x1="24" y1="27" x2="45" y2="50" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#6D4BC3"/>
+      <stop stop-color="#176F5B"/>
       <stop offset="1" stop-color="#2F8F73"/>
     </linearGradient>
   </defs>
