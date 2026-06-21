@@ -1,4 +1,4 @@
-export type VenueArea = "ml" | "cv" | "nlp" | "ai";
+export type VenueArea = "ml" | "cv" | "nlp" | "ai" | "medical";
 
 export type VenueRank = "A*" | "A";
 
@@ -16,6 +16,7 @@ export const AREA_LABELS: Record<VenueArea, string> = {
   cv: "Computer Vision",
   nlp: "Natural Language Processing",
   ai: "Artificial Intelligence",
+  medical: "Medical Imaging",
 };
 
 export const VENUES: Venue[] = [
@@ -145,6 +146,20 @@ export const VENUES: Venue[] = [
       "wacv",
       "winter conference on applications of computer vision",
       "applications of computer vision",
+    ],
+  },
+  {
+    key: "miccai",
+    label: "MICCAI",
+    fullName: "Medical Image Computing and Computer Assisted Intervention",
+    area: "medical",
+    rank: "A",
+    aliases: [
+      "miccai",
+      "medical image computing and computer assisted intervention",
+      "medical image computing and computer-assisted intervention",
+      "international conference on medical image computing and computer assisted intervention",
+      "international conference on medical image computing and computer-assisted intervention",
     ],
   },
   {

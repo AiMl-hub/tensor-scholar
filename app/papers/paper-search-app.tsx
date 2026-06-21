@@ -59,7 +59,7 @@ export default function PaperSearchApp() {
         groups[venue.area].push(venue);
         return groups;
       },
-      { ml: [], cv: [], nlp: [], ai: [] },
+      { ml: [], cv: [], nlp: [], ai: [], medical: [] },
     );
   }, []);
 

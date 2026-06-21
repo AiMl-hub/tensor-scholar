@@ -116,6 +116,7 @@ const PAPER_DIGEST_TOPICS: Partial<Record<string, string>> = {
   iccv: "iccv",
   eccv: "eccv",
   wacv: "wacv",
+  miccai: "miccai",
   acl: "acl",
   emnlp: "emnlp",
   naacl: "naacl",

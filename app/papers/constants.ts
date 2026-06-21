@@ -55,4 +55,5 @@ export const AREA_STYLES: Record<VenueArea, string> = {
   cv: "border-cyan-200 bg-cyan-50 text-cyan-900",
   nlp: "border-rose-200 bg-rose-50 text-rose-900",
   ai: "border-amber-200 bg-amber-50 text-amber-950",
+  medical: "border-blue-200 bg-blue-50 text-blue-950",
 };

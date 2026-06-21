@@ -1,8 +1,8 @@
 # Tensor Scholar
 
 A responsive Vinext/React webpage for searching machine learning, computer
-vision, NLP, and AI conference papers by title, abstract, or author across an
-adjustable date window.
+vision, NLP, AI, and medical imaging conference papers by title, abstract, or
+author across an adjustable date window.
 
 Deployed: https://tensorscholar.vercel.app/
 
@@ -40,4 +40,4 @@ SEMANTIC_SCHOLAR_API_KEY=
 
 Edit `app/lib/venues.ts` to add or remove conferences. The current catalog
 includes NeurIPS, ICML, ICLR, KDD, AISTATS, UAI, AAAI, IJCAI, CVPR, ICCV, ECCV,
-WACV, ACL, EMNLP, NAACL, EACL, COLING, and PMLR.
+WACV, MICCAI, ACL, EMNLP, NAACL, EACL, COLING, and PMLR.
