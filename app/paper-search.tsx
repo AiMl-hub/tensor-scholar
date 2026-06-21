@@ -915,7 +915,6 @@ function PaperResult({
 }) {
   const authors = paper.authors.slice(0, 8).join(", ");
   const extraAuthors = Math.max(0, paper.authors.length - 8);
-  const abstract = paper.abstract ? trimAbstract(paper.abstract) : null;
   const highlight = paper.highlight ? trimAbstract(paper.highlight, 420) : null;
 
   return (
@@ -944,6 +943,14 @@ function PaperResult({
               </Badge>
               {paper.year ? (
                 <Badge className="border-[#c9d4cc] bg-[#f4f7f2] text-[#435047]">{String(paper.year)}</Badge>
+              ) : null}
+              {paper.doi ? (
+                <BadgeLink
+                  className="border-[#c9d4cc] bg-[#f4f7f2] text-[#176f5b] hover:border-[#176f5b]"
+                  href={`https://doi.org/${paper.doi}`}
+                >
+                  DOI
+                </BadgeLink>
               ) : null}
             </div>
           </div>
@@ -979,25 +986,8 @@ function PaperResult({
         </div>
       ) : null}
 
-      {abstract ? (
-        <p className="mt-3 text-sm leading-6 text-[#303b35]">
-          <HighlightedText query={query} text={abstract} />
-        </p>
-      ) : null}
-
-      {paper.doi || paper.pdfUrl ? (
+      {paper.pdfUrl ? (
         <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
-        {paper.doi ? (
-          <a
-            className="rounded-md border border-[#c8d3cc] px-2 py-1 text-[#176f5b] hover:border-[#176f5b]"
-            href={`https://doi.org/${paper.doi}`}
-            rel="noreferrer"
-            target="_blank"
-          >
-            DOI
-          </a>
-        ) : null}
-        {paper.pdfUrl ? (
           <a
             className="rounded-md border border-[#c8d3cc] px-2 py-1 text-[#176f5b] hover:border-[#176f5b]"
             href={paper.pdfUrl}
@@ -1006,7 +996,6 @@ function PaperResult({
           >
             PDF
           </a>
-        ) : null}
         </div>
       ) : null}
     </article>
@@ -1018,6 +1007,27 @@ function Badge({ children, className }: { children: React.ReactNode; className: 
     <span className={`rounded-md border px-2 py-1 text-xs font-semibold ${className}`}>
       {children}
     </span>
+  );
+}
+
+function BadgeLink({
+  children,
+  className,
+  href,
+}: {
+  children: React.ReactNode;
+  className: string;
+  href: string;
+}) {
+  return (
+    <a
+      className={`rounded-md border px-2 py-1 text-xs font-semibold transition ${className}`}
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+    >
+      {children}
+    </a>
   );
 }
 
