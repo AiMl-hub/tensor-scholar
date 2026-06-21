@@ -1526,7 +1526,7 @@ function getDefaultDateWindow() {
   const today = new Date();
   const to = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
   const from = new Date(to);
-  from.setUTCFullYear(from.getUTCFullYear() - 2);
+  from.setUTCFullYear(from.getUTCFullYear() - 1);
 
   return {
     fromDate: toIsoDate(from),

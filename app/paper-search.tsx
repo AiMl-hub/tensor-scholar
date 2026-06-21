@@ -120,7 +120,7 @@ export default function PaperSearchApp() {
   const [field, setField] = useState<SearchField>("all");
   const [sort, setSort] = useState<SortMode>("relevance");
   const [dateWindow, setDateWindow] = useState<DateWindow>(defaultWindow);
-  const [windowPreset, setWindowPreset] = useState<DateWindowPreset>("2y");
+  const [windowPreset, setWindowPreset] = useState<DateWindowPreset>("1y");
   const [selectedVenues, setSelectedVenues] = useState<string[]>(DEFAULT_VENUE_KEYS);
   const [papers, setPapers] = useState<Paper[]>([]);
   const [selectedPaperIds, setSelectedPaperIds] = useState<Set<string>>(() => new Set());
@@ -601,7 +601,7 @@ function KeywordFilters({
           className="h-11 rounded-lg border border-[#b8c7be] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
           id="date-window"
           onChange={(event) => onDateWindowChange(event.target.value as Exclude<DateWindowPreset, "custom">)}
-          value={windowPreset === "custom" ? "2y" : windowPreset}
+          value={windowPreset === "custom" ? "1y" : windowPreset}
         >
           {WINDOW_PRESETS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -990,7 +990,7 @@ function trimAbstract(value: string, maxLength = 520) {
 }
 
 function getDefaultDateWindow() {
-  return getDateWindowForMonths(24);
+  return getDateWindowForMonths(12);
 }
 
 function getDateWindowForMonths(months: number): DateWindow {
