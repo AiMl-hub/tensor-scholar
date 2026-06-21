@@ -79,11 +79,11 @@ type PaperResultProps = {
 };
 
 const AREA_RAIL_STYLES: Record<VenueArea, string> = {
-  ml: "bg-blue-300",
-  cv: "bg-sky-300",
-  nlp: "bg-indigo-200",
-  ai: "bg-yellow-300",
-  medical: "bg-cyan-200",
+  ml: "bg-emerald-300",
+  cv: "bg-cyan-300",
+  nlp: "bg-rose-300",
+  ai: "bg-amber-300",
+  medical: "bg-blue-300",
 };
 
 export function SearchPanel({
@@ -115,7 +115,7 @@ export function SearchPanel({
               <Image
                 alt=""
                 aria-hidden="true"
-                className="h-10 w-10 shrink-0 rounded-xl shadow-[4px_4px_0_#ffd166] sm:h-11 sm:w-11"
+                className="h-10 w-10 shrink-0 rounded-xl shadow-[4px_4px_0_#8fe6cf] sm:h-11 sm:w-11"
                 height={40}
                 src="/favicon.svg"
                 width={40}
@@ -136,7 +136,7 @@ export function SearchPanel({
               Search field
             </label>
             <select
-              className="min-h-12 w-[120px] shrink-0 border-r border-[#b6d4e8] bg-[#fff7d6] px-3 text-sm font-semibold text-[#102f4a] outline-none sm:w-[150px]"
+              className="min-h-12 w-[120px] shrink-0 border-r border-[#b6d4e8] bg-[#effbf6] px-3 text-sm font-semibold text-[#102f4a] outline-none sm:w-[150px]"
               id="search-field"
               onChange={(event) => onFieldChange(event.target.value as SearchField)}
               value={field}
@@ -159,7 +159,7 @@ export function SearchPanel({
             />
           </div>
           <button
-            className="h-12 rounded-xl bg-[#1769aa] px-6 font-semibold text-white shadow-[4px_4px_0_#ffd166] transition hover:-translate-y-0.5 hover:bg-[#0f4f82] hover:shadow-[5px_5px_0_#ffd166] focus:outline-none focus:ring-2 focus:ring-[#ffd166] disabled:cursor-not-allowed disabled:bg-[#9aa9aa]"
+            className="h-12 rounded-xl bg-[#1769aa] px-6 font-semibold text-white shadow-[4px_4px_0_#8fe6cf] transition hover:-translate-y-0.5 hover:bg-[#0f4f82] hover:shadow-[5px_5px_0_#8fe6cf] focus:outline-none focus:ring-2 focus:ring-[#8fe6cf] disabled:cursor-not-allowed disabled:bg-[#9aa9aa]"
             disabled={status === "loading"}
             type="submit"
           >
@@ -182,7 +182,7 @@ export function SearchPanel({
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
               <button
-                className="rounded-lg border border-[#b6d7ef] bg-white px-3 py-2 text-sm font-semibold text-[#1d3f5d] shadow-[2px_2px_0_#d7ecff] transition hover:-translate-y-0.5 hover:border-[#1769aa] hover:bg-[#fff7d6] hover:text-[#0f4f82]"
+                className="rounded-lg border border-[#b6d7ef] bg-white px-3 py-2 text-sm font-semibold text-[#1d3f5d] shadow-[2px_2px_0_#d7ecff] transition hover:-translate-y-0.5 hover:border-[#1769aa] hover:bg-[#effbf6] hover:text-[#0f4f82]"
                 key={sample}
                 onClick={() => onSampleQuery(sample)}
                 type="button"
@@ -249,7 +249,7 @@ export function SourceSidebar({
                     Select
                   </button>
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#1769aa] hover:bg-[#fff4c7] hover:text-[#6b5200] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#1769aa] hover:bg-[#e4f8ef] hover:text-[#6b5200] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
                     disabled={!canClearArea}
                     onClick={() => onClearArea(area)}
                     title={canClearArea ? undefined : "Keep at least one venue selected"}
@@ -440,7 +440,7 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
   return (
     <article
       className={[
-        "relative overflow-hidden rounded-xl border bg-[#fffef5] p-4 pl-5 shadow-[0_8px_24px_rgba(23,105,170,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(23,105,170,0.1)]",
+        "relative overflow-hidden rounded-xl border bg-[#fbfefd] p-4 pl-5 shadow-[0_8px_24px_rgba(23,105,170,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(23,105,170,0.1)]",
         isSelected ? "border-[#1769aa] ring-2 ring-[#bfe7ff]" : "border-[#cfe5f6]",
       ].join(" ")}
     >
@@ -502,7 +502,7 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
       </div>
 
       {highlight ? (
-        <div className="mt-3 rounded-lg border border-[#c5e0f4] bg-[#f1f9ff] px-3 py-2 shadow-[inset_3px_0_0_#ffd166]">
+        <div className="mt-3 rounded-lg border border-[#c5e0f4] bg-[#f1f9ff] px-3 py-2 shadow-[inset_3px_0_0_#8fe6cf]">
           <p className="text-[10px] font-semibold uppercase text-[#1769aa]">Highlight</p>
           <p className="mt-1 text-sm leading-6 text-[#12334f]">
             <HighlightedText query={query} text={highlight} />
@@ -517,11 +517,11 @@ export function LoadingState() {
   return (
     <div className="space-y-3">
       {[0, 1, 2].map((item) => (
-        <div className="rounded-xl border border-[#cfe5f6] bg-[#fffef5] p-4 shadow-sm" key={item}>
-          <div className="h-4 w-40 rounded-md bg-[#ffe7a6]" />
+        <div className="rounded-xl border border-[#cfe5f6] bg-[#fbfefd] p-4 shadow-sm" key={item}>
+          <div className="h-4 w-40 rounded-md bg-[#b9f0df]" />
           <div className="mt-4 h-5 w-4/5 rounded-md bg-[#d9edff]" />
           <div className="mt-3 h-4 w-2/3 rounded-md bg-[#e6f3ff]" />
-          <div className="mt-4 h-16 rounded-md bg-[#fff7d6]" />
+          <div className="mt-4 h-16 rounded-md bg-[#effbf6]" />
         </div>
       ))}
     </div>
@@ -608,7 +608,7 @@ function KeywordFilters({
       <label className="grid gap-1 text-xs font-semibold uppercase text-[#5b7184]" htmlFor="exclude-keywords">
         Exclude
         <input
-          className="h-11 rounded-xl border border-[#b6d7ef] bg-white px-3 text-sm font-medium text-[#102f4a] shadow-[2px_2px_0_#fff0b8] outline-none transition focus:border-[#1769aa] focus:ring-2 focus:ring-[#ffe48a]"
+          className="h-11 rounded-xl border border-[#b6d7ef] bg-white px-3 text-sm font-medium text-[#102f4a] shadow-[2px_2px_0_#d8f4ea] outline-none transition focus:border-[#1769aa] focus:ring-2 focus:ring-[#9be6d2]"
           id="exclude-keywords"
           onChange={(event) => onExcludeChange(event.target.value)}
           placeholder="survey, tutorial"
@@ -680,7 +680,7 @@ function SegmentedControl<T extends string>({
             className={[
               "min-h-10 min-w-0 flex-1 truncate whitespace-nowrap px-2.5 text-sm font-semibold transition sm:px-3",
               buttonWidthClass,
-              active ? "bg-[#1769aa] text-white" : "text-[#2c4d68] hover:bg-[#fff4c7]",
+              active ? "bg-[#1769aa] text-white" : "text-[#2c4d68] hover:bg-[#e4f8ef]",
             ].join(" ")}
             key={option.value}
             onClick={() => onChange(option.value)}
@@ -721,7 +721,7 @@ function HighlightedText({ query, text }: { query: string; text: string }) {
   return text.split(pattern).map((part, index) => {
     const highlighted = tokens.some((token) => part.toLowerCase() === token.toLowerCase());
     return highlighted ? (
-      <mark className="rounded bg-[#fff19c] px-0.5 text-inherit" key={`${part}-${index}`}>
+      <mark className="rounded bg-[#ccfbf1] px-0.5 text-inherit" key={`${part}-${index}`}>
         {part}
       </mark>
     ) : (
