@@ -156,7 +156,7 @@ export function SearchPanel({
             />
           </div>
           <button
-            className="h-12 rounded-xl bg-[#7f6541] px-6 font-semibold text-white shadow-[4px_4px_0_#eadfc4] transition hover:-translate-y-0.5 hover:bg-[#654f34] hover:shadow-[5px_5px_0_#eadfc4] focus:outline-none focus:ring-2 focus:ring-[#d8c49d] disabled:cursor-not-allowed disabled:bg-[#a49378]"
+            className="h-12 rounded-xl bg-[#176f5b] px-6 font-semibold text-white shadow-[4px_4px_0_#bfded1] transition hover:-translate-y-0.5 hover:bg-[#115744] hover:shadow-[5px_5px_0_#bfded1] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
             disabled={status === "loading"}
             type="submit"
           >
