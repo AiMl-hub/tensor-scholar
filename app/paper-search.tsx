@@ -126,7 +126,6 @@ export default function PaperSearchApp() {
   const [selectedPaperIds, setSelectedPaperIds] = useState<Set<string>>(() => new Set());
   const [pageSize, setPageSize] = useState<PageSize>(10);
   const [maxResults, setMaxResults] = useState<ResultLimit>(100);
-  const [exportFormat, setExportFormat] = useState<ExportFormat>("bibtex");
   const [currentPage, setCurrentPage] = useState(1);
   const [meta, setMeta] = useState<SearchMeta | null>(null);
   const [status, setStatus] = useState<Status>("idle");
@@ -534,9 +533,7 @@ export default function PaperSearchApp() {
             <SelectionToolbar
               onClear={clearSelection}
               onExport={exportSelected}
-              onExportFormatChange={setExportFormat}
               onSelectAll={selectAllVisiblePapers}
-              exportFormat={exportFormat}
               selectedCount={selectedPapers.length}
               totalCount={visiblePapers.length}
             />
@@ -842,18 +839,14 @@ function PaginationControls({
 }
 
 function SelectionToolbar({
-  exportFormat,
   onClear,
   onExport,
-  onExportFormatChange,
   onSelectAll,
   selectedCount,
   totalCount,
 }: {
-  exportFormat: ExportFormat;
   onClear: () => void;
   onExport: (format: ExportFormat) => void;
-  onExportFormatChange: (format: ExportFormat) => void;
   onSelectAll: () => void;
   selectedCount: number;
   totalCount: number;
@@ -885,31 +878,39 @@ function SelectionToolbar({
           >
             Clear
           </button>
-          <div className="grid grid-cols-[minmax(150px,1fr)_auto] overflow-hidden rounded-md border border-[#c8d3cc] bg-white">
-            <label className="sr-only" htmlFor="export-format">
-              Export format
-            </label>
-            <select
-              className="h-10 min-w-0 border-0 bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:ring-2 focus:ring-inset focus:ring-[#93d7c0]"
-              id="export-format"
-              onChange={(event) => onExportFormatChange(event.target.value as ExportFormat)}
-              value={exportFormat}
-            >
-              {EXPORT_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+          {hasSelection ? (
+            <details className="group relative">
+              <summary className="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-md bg-[#176f5b] px-4 text-sm font-semibold text-white transition hover:bg-[#115744] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] [&::-webkit-details-marker]:hidden">
+                Export
+                <span aria-hidden="true" className="text-xs transition group-open:rotate-180">
+                  v
+                </span>
+              </summary>
+              <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#c8d3cc] bg-white shadow-lg">
+                {EXPORT_OPTIONS.map((option) => (
+                  <button
+                    className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#eef5f0] hover:text-[#176f5b]"
+                    key={option.value}
+                    onClick={(event) => {
+                      onExport(option.value);
+                      event.currentTarget.closest("details")?.removeAttribute("open");
+                    }}
+                    type="button"
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </details>
+          ) : (
             <button
-              className="min-h-10 border-l border-[#c8d3cc] bg-[#176f5b] px-3 text-sm font-semibold text-white transition hover:bg-[#115744] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
-              disabled={!hasSelection}
-              onClick={() => onExport(exportFormat)}
+              className="min-h-10 cursor-not-allowed rounded-md bg-[#8aa39a] px-4 text-sm font-semibold text-white"
+              disabled
               type="button"
             >
               Export
             </button>
-          </div>
+          )}
         </div>
       </div>
     </div>
