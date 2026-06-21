@@ -133,7 +133,7 @@ export function SearchPanel({
               Search field
             </label>
             <select
-              className="min-h-12 w-[120px] shrink-0 border-r border-[#c8d3cc] bg-[#fff9e8] px-3 text-sm font-semibold text-[#25302a] outline-none sm:w-[150px]"
+              className="min-h-12 w-[120px] shrink-0 border-r border-[#b7d8ca] bg-[#eef8f2] px-3 text-sm font-semibold text-[#176f5b] outline-none sm:w-[150px]"
               id="search-field"
               onChange={(event) => onFieldChange(event.target.value as SearchField)}
               value={field}
@@ -156,7 +156,7 @@ export function SearchPanel({
             />
           </div>
           <button
-            className="h-12 rounded-xl bg-[#176f5b] px-6 font-semibold text-white shadow-[4px_4px_0_#bfded1] transition hover:-translate-y-0.5 hover:bg-[#115744] hover:shadow-[5px_5px_0_#bfded1] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
+            className="h-12 rounded-xl bg-[#7f6541] px-6 font-semibold text-white shadow-[4px_4px_0_#eadfc4] transition hover:-translate-y-0.5 hover:bg-[#654f34] hover:shadow-[5px_5px_0_#eadfc4] focus:outline-none focus:ring-2 focus:ring-[#d8c49d] disabled:cursor-not-allowed disabled:bg-[#a49378]"
             disabled={status === "loading"}
             type="submit"
           >
@@ -175,7 +175,7 @@ export function SearchPanel({
         </form>
 
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase text-[#7f6541]">Start with a spark</p>
+          <p className="mb-2 text-xs font-semibold uppercase text-[#7f6541]">Suggested research queries</p>
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
               <button
@@ -246,7 +246,7 @@ export function SourceSidebar({
                     Select
                   </button>
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#fff2e7] hover:text-[#7a4122] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#eef8f2] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
                     disabled={!canClearArea}
                     onClick={() => onClearArea(area)}
                     title={canClearArea ? undefined : "Keep at least one venue selected"}
@@ -605,7 +605,7 @@ function KeywordFilters({
       <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="exclude-keywords">
         Exclude
         <input
-          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-medium text-[#25302a] shadow-[2px_2px_0_#f8dfdf] outline-none transition focus:border-[#b15b65] focus:ring-2 focus:ring-[#f2b6bd]"
+          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-medium text-[#25302a] shadow-[2px_2px_0_#e3efe8] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
           id="exclude-keywords"
           onChange={(event) => onExcludeChange(event.target.value)}
           placeholder="survey, tutorial"
