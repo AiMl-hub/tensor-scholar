@@ -394,23 +394,20 @@ export default function PaperSearchApp() {
               {status === "loading" ? "Searching" : "Search"}
             </button>
             <KeywordFilters
+              dateWindow={dateWindow}
               excludeKeywords={excludeKeywords}
               includeKeywords={includeKeywords}
+              isDateWindowValid={isValidDateWindow(dateWindow)}
               maxResults={maxResults}
+              onDateChange={updateDateWindow}
               onExcludeChange={setExcludeKeywords}
               onIncludeChange={setIncludeKeywords}
               onMaxResultsChange={updateMaxResults}
+              onPreset={applyWindowPreset}
+              preset={windowPreset}
+              today={defaultWindow.toDate}
             />
           </form>
-
-          <WindowControls
-            dateWindow={dateWindow}
-            isValid={isValidDateWindow(dateWindow)}
-            onDateChange={updateDateWindow}
-            onPreset={applyWindowPreset}
-            preset={windowPreset}
-            today={defaultWindow.toDate}
-          />
 
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
@@ -562,102 +559,35 @@ export default function PaperSearchApp() {
   );
 }
 
-function WindowControls({
+function KeywordFilters({
   dateWindow,
-  isValid,
+  excludeKeywords,
+  includeKeywords,
+  isDateWindowValid,
+  maxResults,
   onDateChange,
+  onExcludeChange,
+  onIncludeChange,
+  onMaxResultsChange,
   onPreset,
   preset,
   today,
 }: {
   dateWindow: DateWindow;
-  isValid: boolean;
+  excludeKeywords: string;
+  includeKeywords: string;
+  isDateWindowValid: boolean;
+  maxResults: ResultLimit;
   onDateChange: (part: keyof DateWindow, value: string) => void;
+  onExcludeChange: (value: string) => void;
+  onIncludeChange: (value: string) => void;
+  onMaxResultsChange: (value: ResultLimit) => void;
   onPreset: (preset: Exclude<DateWindowPreset, "custom">) => void;
   preset: DateWindowPreset;
   today: string;
 }) {
   return (
-    <div className="rounded-lg border border-[#c8d3cc] bg-white p-3 shadow-sm">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase text-[#65716a]">Date window</p>
-          <div className="mt-2 flex flex-wrap gap-2" aria-label="Date window presets">
-            {WINDOW_PRESETS.map((option) => {
-              const active = preset === option.value;
-              return (
-                <button
-                  aria-pressed={active}
-                  className={[
-                    "min-h-9 rounded-md border px-3 text-sm font-semibold transition",
-                    active
-                      ? "border-[#176f5b] bg-[#1d6f5c] text-white"
-                      : "border-[#c8d3cc] text-[#405047] hover:border-[#176f5b] hover:text-[#176f5b]",
-                  ].join(" ")}
-                  key={option.value}
-                  onClick={() => onPreset(option.value)}
-                  type="button"
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="grid gap-2 sm:grid-cols-2">
-          <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="from-date">
-            From
-            <input
-              className={[
-                "h-10 rounded-md border bg-white px-3 text-sm font-medium text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]",
-                isValid ? "border-[#c8d3cc]" : "border-rose-300",
-              ].join(" ")}
-              id="from-date"
-              max={dateWindow.toDate || today}
-              onChange={(event) => onDateChange("fromDate", event.target.value)}
-              type="date"
-              value={dateWindow.fromDate}
-            />
-          </label>
-          <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="to-date">
-            To
-            <input
-              className={[
-                "h-10 rounded-md border bg-white px-3 text-sm font-medium text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]",
-                isValid ? "border-[#c8d3cc]" : "border-rose-300",
-              ].join(" ")}
-              id="to-date"
-              max={today}
-              min={dateWindow.fromDate}
-              onChange={(event) => onDateChange("toDate", event.target.value)}
-              type="date"
-              value={dateWindow.toDate}
-            />
-          </label>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function KeywordFilters({
-  excludeKeywords,
-  includeKeywords,
-  maxResults,
-  onExcludeChange,
-  onIncludeChange,
-  onMaxResultsChange,
-}: {
-  excludeKeywords: string;
-  includeKeywords: string;
-  maxResults: ResultLimit;
-  onExcludeChange: (value: string) => void;
-  onIncludeChange: (value: string) => void;
-  onMaxResultsChange: (value: ResultLimit) => void;
-}) {
-  return (
-    <div className="grid gap-3 lg:col-span-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_160px]">
+    <div className="grid gap-3 lg:col-span-2 xl:grid-cols-[minmax(150px,1fr)_minmax(150px,1fr)_minmax(540px,1.5fr)_140px]">
       <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="include-keywords">
         Must include
         <input
@@ -681,6 +611,67 @@ function KeywordFilters({
           value={excludeKeywords}
         />
       </label>
+
+      <fieldset className="grid gap-1">
+        <legend className="text-xs font-semibold uppercase text-[#65716a]">Date window</legend>
+        <div className="grid gap-2 rounded-lg border border-[#b8c7be] bg-white p-2 sm:grid-cols-[auto_130px_130px]">
+          <div className="flex flex-wrap gap-1.5" aria-label="Date window presets">
+            {WINDOW_PRESETS.map((option) => {
+              const active = preset === option.value;
+              return (
+                <button
+                  aria-pressed={active}
+                  className={[
+                    "h-9 rounded-md border px-2.5 text-xs font-semibold transition",
+                    active
+                      ? "border-[#176f5b] bg-[#1d6f5c] text-white"
+                      : "border-[#c8d3cc] text-[#405047] hover:border-[#176f5b] hover:text-[#176f5b]",
+                  ].join(" ")}
+                  key={option.value}
+                  onClick={() => onPreset(option.value)}
+                  type="button"
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="contents">
+            <label className="sr-only" htmlFor="from-date">
+              From
+            </label>
+            <input
+              aria-label="From"
+              className={[
+                "h-9 min-w-0 rounded-md border bg-white px-2 text-xs font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]",
+                isDateWindowValid ? "border-[#c8d3cc]" : "border-rose-300",
+              ].join(" ")}
+              id="from-date"
+              max={dateWindow.toDate || today}
+              onChange={(event) => onDateChange("fromDate", event.target.value)}
+              type="date"
+              value={dateWindow.fromDate}
+            />
+            <label className="sr-only" htmlFor="to-date">
+              To
+            </label>
+            <input
+              aria-label="To"
+              className={[
+                "h-9 min-w-0 rounded-md border bg-white px-2 text-xs font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]",
+                isDateWindowValid ? "border-[#c8d3cc]" : "border-rose-300",
+              ].join(" ")}
+              id="to-date"
+              max={today}
+              min={dateWindow.fromDate}
+              onChange={(event) => onDateChange("toDate", event.target.value)}
+              type="date"
+              value={dateWindow.toDate}
+            />
+          </div>
+        </div>
+      </fieldset>
 
       <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="max-results">
         Max results
