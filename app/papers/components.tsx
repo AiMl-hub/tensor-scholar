@@ -79,11 +79,11 @@ type PaperResultProps = {
 };
 
 const AREA_RAIL_STYLES: Record<VenueArea, string> = {
-  ml: "bg-emerald-300",
-  cv: "bg-cyan-300",
-  nlp: "bg-rose-300",
-  ai: "bg-amber-300",
-  medical: "bg-blue-300",
+  ml: "bg-emerald-200/75",
+  cv: "bg-cyan-200/75",
+  nlp: "bg-rose-200/75",
+  ai: "bg-amber-200/75",
+  medical: "bg-blue-200/75",
 };
 
 export function SearchPanel({
