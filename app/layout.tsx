@@ -3,8 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Finding Codie",
-  description:
-    "Dive into AI papers, follow the signal, and surface what matters.",
+  description: "Dive. Catch. Code.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

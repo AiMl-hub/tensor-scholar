@@ -125,7 +125,7 @@ export function SearchPanel({
               </h1>
             </div>
             <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#526157]">
-              Dive into AI papers. Follow the signal. Surface what matters.
+              Dive. Catch. Code.
             </p>
           </div>
         </div>
