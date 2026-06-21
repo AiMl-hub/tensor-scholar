@@ -182,6 +182,14 @@ export default function PaperSearchApp() {
     setSelectedVenues((current) => Array.from(new Set([...current, ...areaKeys])));
   }
 
+  function clearArea(area: VenueArea) {
+    const areaKeys = new Set(groupedVenues[area].map((venue) => venue.key));
+    setSelectedVenues((current) => {
+      const next = current.filter((key) => !areaKeys.has(key));
+      return next.length ? next : current;
+    });
+  }
+
   function togglePaperSelection(paper: Paper) {
     const paperKey = getPaperKey(paper);
     setSelectedPaperIds((current) => {
@@ -265,6 +273,7 @@ export default function PaperSearchApp() {
       <div className="mx-auto grid max-w-7xl gap-5 px-4 py-5 sm:px-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:px-8">
         <SourceSidebar
           groupedVenues={groupedVenues}
+          onClearArea={clearArea}
           onResetVenues={() => setSelectedVenues(DEFAULT_VENUE_KEYS)}
           onSelectArea={selectArea}
           onToggleVenue={toggleVenue}

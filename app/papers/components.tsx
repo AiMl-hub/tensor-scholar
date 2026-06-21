@@ -45,6 +45,7 @@ type SearchPanelProps = {
 
 type SourceSidebarProps = {
   groupedVenues: Record<VenueArea, Venue[]>;
+  onClearArea: (area: VenueArea) => void;
   onResetVenues: () => void;
   onSelectArea: (area: VenueArea) => void;
   onToggleVenue: (key: string) => void;
@@ -184,6 +185,7 @@ export function SearchPanel({
 
 export function SourceSidebar({
   groupedVenues,
+  onClearArea,
   onResetVenues,
   onSelectArea,
   onToggleVenue,
@@ -211,20 +213,40 @@ export function SourceSidebar({
       </div>
 
       <div className="mt-4 space-y-5">
-        {(Object.keys(groupedVenues) as VenueArea[]).map((area) => (
-          <section key={area}>
-            <div className="mb-2 flex items-center justify-between gap-2">
-              <h3 className="text-sm font-semibold text-[#25302a]">{AREA_LABELS[area]}</h3>
-              <button
-                className="text-xs font-semibold text-[#176f5b] hover:text-[#0f4c3d]"
-                onClick={() => onSelectArea(area)}
-                type="button"
-              >
-                Select
-              </button>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {groupedVenues[area].map((venue) => {
+        {(Object.keys(groupedVenues) as VenueArea[]).map((area) => {
+          const areaVenues = groupedVenues[area];
+          const areaSelectedCount = areaVenues.filter((venue) =>
+            selectedVenueSet.has(venue.key),
+          ).length;
+          const allAreaSelected = areaSelectedCount === areaVenues.length;
+          const canClearArea = areaSelectedCount > 0 && areaSelectedCount < selectedVenuesCount;
+
+          return (
+            <section key={area}>
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <h3 className="text-sm font-semibold text-[#25302a]">{AREA_LABELS[area]}</h3>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="text-xs font-semibold text-[#176f5b] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    disabled={allAreaSelected}
+                    onClick={() => onSelectArea(area)}
+                    type="button"
+                  >
+                    Select
+                  </button>
+                  <button
+                    className="text-xs font-semibold text-[#176f5b] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    disabled={!canClearArea}
+                    onClick={() => onClearArea(area)}
+                    title={canClearArea ? undefined : "Keep at least one venue selected"}
+                    type="button"
+                  >
+                    Unselect
+                  </button>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {areaVenues.map((venue) => {
                 const active = selectedVenueSet.has(venue.key);
                 return (
                   <button
@@ -244,9 +266,10 @@ export function SourceSidebar({
                   </button>
                 );
               })}
-            </div>
-          </section>
-        ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </aside>
   );
