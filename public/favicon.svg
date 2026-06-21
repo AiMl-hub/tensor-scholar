@@ -2,14 +2,29 @@
   <rect x="5" y="5" width="54" height="54" rx="15" fill="#F7FCF8"/>
   <rect x="5" y="5" width="54" height="54" rx="15" stroke="#176F5B" stroke-width="3"/>
 
-  <path d="M22 34C27.8 37.4 36.2 37.4 42 34V44.5C36.2 48.6 27.8 48.6 22 44.5V34Z" fill="#176F5B" stroke="#15251D" stroke-width="2.6" stroke-linejoin="round"/>
-  <path d="M25.5 38C29.8 39.5 34.2 39.5 38.5 38" stroke="#93D7C0" stroke-width="2.4" stroke-linecap="round"/>
+  <g stroke="#15251D" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M32 10L39 14L32 18L25 14L32 10Z" fill="#176F5B"/>
+    <path d="M25 15.5L32 19.5L25 23.5L18 19.5L25 15.5Z" fill="#1D8A6C"/>
+    <path d="M32 15.5L39 19.5L32 23.5L25 19.5L32 15.5Z" fill="#93D7C0"/>
+    <path d="M39 15.5L46 19.5L39 23.5L32 19.5L39 15.5Z" fill="#DDF7EF"/>
+    <path d="M18 21L25 25L18 29L11 25L18 21Z" fill="#93D7C0"/>
+    <path d="M25 21L32 25L25 29L18 25L25 21Z" fill="#176F5B"/>
+    <path d="M32 21L39 25L32 29L25 25L32 21Z" fill="#1D8A6C"/>
+    <path d="M39 21L46 25L39 29L32 25L39 21Z" fill="#93D7C0"/>
+    <path d="M46 21L53 25L46 29L39 25L46 21Z" fill="#176F5B"/>
+    <path d="M25 26.5L32 30.5L25 34.5L18 30.5L25 26.5Z" fill="#DDF7EF"/>
+    <path d="M32 26.5L39 30.5L32 34.5L25 30.5L32 26.5Z" fill="#93D7C0"/>
+    <path d="M39 26.5L46 30.5L39 34.5L32 30.5L39 26.5Z" fill="#1D8A6C"/>
+    <path d="M32 32L39 36L32 40L25 36L32 32Z" fill="#176F5B"/>
+  </g>
 
-  <path d="M32 12L42 18L32 24L22 18L32 12Z" fill="#176F5B" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
-  <path d="M22 18L32 24L22 30L12 24L22 18Z" fill="#1D8A6C" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
-  <path d="M42 18L52 24L42 30L32 24L42 18Z" fill="#93D7C0" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
-  <path d="M32 24L42 30L32 36L22 30L32 24Z" fill="#DDF7EF" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M11 25L32 10L53 25L32 40L11 25Z" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
 
-  <path d="M52 24V39" stroke="#15251D" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="52" cy="42.5" r="3.2" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
+  <path d="M22 37C27.8 40 36.2 40 42 37V45.5C36.2 49.2 27.8 49.2 22 45.5V37Z" fill="#F7FCF8" stroke="#15251D" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M24 38.2C29.2 40.1 34.8 40.1 40 38.2" stroke="#93D7C0" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M28 39V48" stroke="#1D8A6C" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M36 39V48" stroke="#1D8A6C" stroke-width="2.4" stroke-linecap="round"/>
+
+  <path d="M53 25V40" stroke="#15251D" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="53" cy="43.5" r="3.2" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
 </svg>
