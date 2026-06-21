@@ -1,46 +1,30 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <clipPath id="cap-clip">
-      <path d="M10 25L32 11L54 25L32 39L10 25Z"/>
+    <clipPath id="rounded-tensor">
+      <rect x="19" y="27" width="26" height="27" rx="10"/>
     </clipPath>
   </defs>
 
   <rect x="5" y="5" width="54" height="54" rx="15" fill="#F7FCF8"/>
   <rect x="5" y="5" width="54" height="54" rx="15" stroke="#176F5B" stroke-width="3"/>
 
-  <g clip-path="url(#cap-clip)">
-    <rect x="10" y="11" width="44" height="28" fill="#DDF7EF"/>
-    <path d="M10 18H54M10 25H54M10 32H54M17 11V39M24 11V39M31 11V39M38 11V39M45 11V39M52 11V39" stroke="#F7FCF8" stroke-width="2.2"/>
-    <rect x="10" y="11" width="7" height="7" fill="#176F5B"/>
-    <rect x="17" y="11" width="7" height="7" fill="#1D8A6C"/>
-    <rect x="24" y="11" width="7" height="7" fill="#93D7C0"/>
-    <rect x="31" y="11" width="7" height="7" fill="#176F5B"/>
-    <rect x="38" y="11" width="7" height="7" fill="#1D8A6C"/>
-    <rect x="45" y="11" width="9" height="7" fill="#93D7C0"/>
-    <rect x="10" y="18" width="7" height="7" fill="#93D7C0"/>
-    <rect x="17" y="18" width="7" height="7" fill="#DDF7EF"/>
-    <rect x="24" y="18" width="7" height="7" fill="#176F5B"/>
-    <rect x="31" y="18" width="7" height="7" fill="#1D8A6C"/>
-    <rect x="38" y="18" width="7" height="7" fill="#93D7C0"/>
-    <rect x="45" y="18" width="9" height="7" fill="#176F5B"/>
-    <rect x="10" y="25" width="7" height="7" fill="#1D8A6C"/>
-    <rect x="17" y="25" width="7" height="7" fill="#176F5B"/>
-    <rect x="24" y="25" width="7" height="7" fill="#DDF7EF"/>
-    <rect x="31" y="25" width="7" height="7" fill="#93D7C0"/>
-    <rect x="38" y="25" width="7" height="7" fill="#176F5B"/>
-    <rect x="45" y="25" width="9" height="7" fill="#1D8A6C"/>
-    <rect x="10" y="32" width="7" height="7" fill="#DDF7EF"/>
-    <rect x="17" y="32" width="7" height="7" fill="#93D7C0"/>
-    <rect x="24" y="32" width="7" height="7" fill="#1D8A6C"/>
-    <rect x="31" y="32" width="7" height="7" fill="#176F5B"/>
-    <rect x="38" y="32" width="7" height="7" fill="#DDF7EF"/>
-    <rect x="45" y="32" width="9" height="7" fill="#93D7C0"/>
+  <path d="M11 23L32 8L53 23L32 38L11 23Z" fill="#1D8A6C"/>
+  <path d="M32 8L53 23L32 38V8Z" fill="#176F5B"/>
+  <path d="M11 23L32 8L53 23L32 38L11 23Z" stroke="#15251D" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <g clip-path="url(#rounded-tensor)">
+    <rect x="19" y="27" width="26" height="27" fill="#DDF7EF"/>
+    <rect x="19" y="27" width="8.7" height="9" fill="#93D7C0"/>
+    <rect x="27.7" y="27" width="8.6" height="9" fill="#DDF7EF"/>
+    <rect x="36.3" y="27" width="8.7" height="9" fill="#176F5B"/>
+    <rect x="19" y="36" width="8.7" height="9" fill="#1D8A6C"/>
+    <rect x="27.7" y="36" width="8.6" height="9" fill="#93D7C0"/>
+    <rect x="36.3" y="36" width="8.7" height="9" fill="#DDF7EF"/>
+    <rect x="19" y="45" width="8.7" height="9" fill="#DDF7EF"/>
+    <rect x="27.7" y="45" width="8.6" height="9" fill="#176F5B"/>
+    <rect x="36.3" y="45" width="8.7" height="9" fill="#1D8A6C"/>
+    <path d="M27.7 27V54M36.3 27V54M19 36H45M19 45H45" stroke="#F7FCF8" stroke-width="2"/>
   </g>
 
-  <path d="M10 25L32 11L54 25L32 39L10 25Z" stroke="#15251D" stroke-width="2.8" stroke-linejoin="round"/>
-  <path d="M22 36.5C27.8 39.8 36.2 39.8 42 36.5V45.5C36.2 49.2 27.8 49.2 22 45.5V36.5Z" fill="#F7FCF8" stroke="#15251D" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M24.5 38.2C29.6 40 34.4 40 39.5 38.2" stroke="#93D7C0" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M28 39V47.5M36 39V47.5" stroke="#1D8A6C" stroke-width="2.3" stroke-linecap="round"/>
-  <path d="M54 25V40" stroke="#15251D" stroke-width="2.6" stroke-linecap="round"/>
-  <circle cx="54" cy="43.5" r="3.2" fill="#93D7C0" stroke="#15251D" stroke-width="2"/>
+  <rect x="19" y="27" width="26" height="27" rx="10" stroke="#15251D" stroke-width="2.5"/>
 </svg>
