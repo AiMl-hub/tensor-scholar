@@ -545,7 +545,7 @@ export function AppFooter() {
   return (
     <footer className="border-t border-[#cdd8cf] bg-[#eef5ef]">
       <div className="nes-title mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-[#18211c] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <p>Copyright 2026 Mai A. Shaaban</p>
+        <p>Made with love by Mai A. Shaaban</p>
         <div className="flex flex-wrap gap-3">
           <a
             className="text-[#176f5b] hover:text-[#0f4c3d]"
