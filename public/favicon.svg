@@ -1,6 +1,23 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M22 19.2727C22 20.779 20.779 22 19.2727 22H14.7273C13.221 22 12 20.779 12 19.2727V12H19.2727C20.779 12 22 13.221 22 14.7273V19.2727Z" fill="#93D7C0"/>
-<path d="M20 2C21.1046 2 22 2.89543 22 4V7C22 8.10457 21.1046 9 20 9H17C15.8954 9 15 8.10457 15 7V4C15 2.89543 15.8954 2 17 2H20Z" fill="#176F5B"/>
-<path d="M7 15C8.10457 15 9 15.8954 9 17V20C9 21.1046 8.10457 22 7 22H4C2.89543 22 2 21.1046 2 20V17C2 15.8954 2.89543 15 4 15H7Z" fill="#176F5B"/>
-<path d="M12 12H4.72727C3.22104 12 2 10.779 2 9.27273V4.72727C2 3.22104 3.22104 2 4.72727 2H9.27273C10.779 2 12 3.22104 12 4.72727V12Z" fill="#1D8A6C"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#F7FCF8"/>
+  <rect x="4" y="4" width="56" height="56" rx="16" stroke="#176F5B" stroke-width="3"/>
+
+  <path d="M45 32L56 23V41L45 32Z" fill="#8FE6CF" stroke="#15251D" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M12 32C17.4 21 31 18 45 24V40C31 46 17.4 43 12 32Z" fill="#1D8A6C" stroke="#15251D" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M25 22C30 27 30 37 25 42" stroke="#F7FCF8" stroke-width="4.4" stroke-linecap="round"/>
+  <path d="M31 22.5L40 26.5L32.5 30.5L25.8 25.8" fill="#DDF7EF"/>
+
+  <circle cx="21.5" cy="31" r="4.2" fill="#F7FCF8" stroke="#15251D" stroke-width="2.4"/>
+  <circle cx="22.6" cy="30" r="1.3" fill="#15251D"/>
+  <path d="M24.7 34.2L29.2 38.7" stroke="#15251D" stroke-width="2.2" stroke-linecap="round"/>
+
+  <path d="M35.5 16L44.5 12L53.5 17" stroke="#176F5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44.5 12V21.5" stroke="#176F5B" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="35.5" cy="16" r="3.2" fill="#93D7C0" stroke="#176F5B" stroke-width="2"/>
+  <circle cx="44.5" cy="12" r="3.2" fill="#F7FCF8" stroke="#176F5B" stroke-width="2"/>
+  <circle cx="53.5" cy="17" r="3.2" fill="#93D7C0" stroke="#176F5B" stroke-width="2"/>
+  <circle cx="44.5" cy="21.5" r="3.2" fill="#DDF7EF" stroke="#176F5B" stroke-width="2"/>
+
+  <path d="M14 46L9.5 50.5L14 55" stroke="#176F5B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25 46L29.5 50.5L25 55" stroke="#176F5B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

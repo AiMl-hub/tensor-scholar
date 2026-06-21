@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tensor Scholar",
+  title: "Finding Codie",
   description:
-    "Search recent machine learning, computer vision, NLP, and AI conference papers.",
+    "Dive into AI papers, follow the signal, and surface what matters.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
