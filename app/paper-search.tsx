@@ -491,52 +491,28 @@ export default function PaperSearchApp() {
         </aside>
 
         <section className="min-w-0">
-          <div className="mb-4 flex flex-col gap-3 rounded-lg border border-[#d6ddd8] bg-white p-3 shadow-sm lg:flex-row lg:items-center lg:justify-between">
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-[#25302a]">
-                {status === "success"
-                  ? `${papers.length} papers`
-                  : status === "loading"
-                    ? "Searching"
-                    : "Ready"}
-              </p>
-            </div>
-            <SegmentedControl<SortMode>
-              label="Sort"
-              options={SORT_OPTIONS}
-              stackUntilLarge
-              value={sort}
-              onChange={updateSort}
-            />
-          </div>
+          <ResultsToolbar
+            currentPage={safeCurrentPage}
+            onClear={clearSelection}
+            onExport={exportSelected}
+            onPageChange={(page) => setCurrentPage(Math.max(1, Math.min(page, pageCount)))}
+            onPageSizeChange={updatePageSize}
+            onSelectAll={selectAllVisiblePapers}
+            onSortChange={updateSort}
+            pageCount={pageCount}
+            pageSize={pageSize}
+            pageStart={pageStart}
+            resultCount={papers.length}
+            selectedCount={selectedPapers.length}
+            sort={sort}
+            status={status}
+            visibleCount={visiblePapers.length}
+          />
 
           {meta?.errors.length ? (
             <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-950">
               {meta.errors.join(" ")}
             </div>
-          ) : null}
-
-          {papers.length > 0 ? (
-            <PaginationControls
-              currentPage={safeCurrentPage}
-              onPageChange={(page) => setCurrentPage(Math.max(1, Math.min(page, pageCount)))}
-              onPageSizeChange={updatePageSize}
-              pageCount={pageCount}
-              pageSize={pageSize}
-              pageStart={pageStart}
-              totalCount={papers.length}
-              visibleCount={visiblePapers.length}
-            />
-          ) : null}
-
-          {papers.length > 0 ? (
-            <SelectionToolbar
-              onClear={clearSelection}
-              onExport={exportSelected}
-              onSelectAll={selectAllVisiblePapers}
-              selectedCount={selectedPapers.length}
-              totalCount={visiblePapers.length}
-            />
           ) : null}
 
           {status === "loading" ? <LoadingState /> : null}
@@ -767,152 +743,157 @@ function SegmentedControl<T extends string>({
   );
 }
 
-function PaginationControls({
+function ResultsToolbar({
   currentPage,
+  onClear,
+  onExport,
   onPageChange,
   onPageSizeChange,
+  onSelectAll,
+  onSortChange,
   pageCount,
   pageSize,
   pageStart,
-  totalCount,
+  resultCount,
+  selectedCount,
+  sort,
+  status,
   visibleCount,
 }: {
   currentPage: number;
+  onClear: () => void;
+  onExport: (format: ExportFormat) => void;
   onPageChange: (page: number) => void;
   onPageSizeChange: (pageSize: PageSize) => void;
+  onSelectAll: () => void;
+  onSortChange: (sort: SortMode) => void;
   pageCount: number;
   pageSize: PageSize;
   pageStart: number;
-  totalCount: number;
+  resultCount: number;
+  selectedCount: number;
+  sort: SortMode;
+  status: Status;
   visibleCount: number;
 }) {
-  const firstVisible = totalCount ? pageStart + 1 : 0;
-  const lastVisible = Math.min(pageStart + visibleCount, totalCount);
-
-  return (
-    <div className="mb-4 flex flex-col gap-3 rounded-lg border border-[#d6ddd8] bg-white p-3 shadow-sm md:flex-row md:items-center md:justify-between">
-      <p className="text-sm font-semibold text-[#25302a]">
-        Showing {firstVisible}-{lastVisible} of {totalCount}
-      </p>
-
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <label className="flex items-center gap-2 text-sm font-semibold text-[#405047]" htmlFor="page-size">
-          Per page
-          <select
-            className="h-10 rounded-md border border-[#c8d3cc] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
-            id="page-size"
-            onChange={(event) => onPageSizeChange(parsePageSize(event.target.value))}
-            value={pageSize}
-          >
-            {PAGE_SIZE_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <div className="grid grid-cols-[auto_1fr_auto] items-center overflow-hidden rounded-lg border border-[#c8d3cc] bg-white">
-          <button
-            className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
-            disabled={currentPage <= 1}
-            onClick={() => onPageChange(currentPage - 1)}
-            type="button"
-          >
-            Prev
-          </button>
-          <span className="border-x border-[#c8d3cc] px-3 text-center text-sm font-semibold text-[#405047]">
-            {currentPage}/{pageCount}
-          </span>
-          <button
-            className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
-            disabled={currentPage >= pageCount}
-            onClick={() => onPageChange(currentPage + 1)}
-            type="button"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SelectionToolbar({
-  onClear,
-  onExport,
-  onSelectAll,
-  selectedCount,
-  totalCount,
-}: {
-  onClear: () => void;
-  onExport: (format: ExportFormat) => void;
-  onSelectAll: () => void;
-  selectedCount: number;
-  totalCount: number;
-}) {
+  const hasResults = resultCount > 0;
   const hasSelection = selectedCount > 0;
+  const firstVisible = hasResults ? pageStart + 1 : 0;
+  const lastVisible = Math.min(pageStart + visibleCount, resultCount);
+  const statusText =
+    status === "success" ? `${resultCount} papers` : status === "loading" ? "Searching" : "Ready";
 
   return (
-    <div className="mb-4 rounded-lg border border-[#c8d3cc] bg-white p-3 shadow-sm">
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="text-sm font-semibold text-[#25302a]">
-            {selectedCount} selected
-          </p>
-        </div>
+    <div className="mb-4 rounded-lg border border-[#d6ddd8] bg-white shadow-sm">
+      <div className="flex flex-col gap-3 p-3 lg:flex-row lg:items-center lg:justify-between">
+        <p className="text-sm font-semibold text-[#25302a]">{statusText}</p>
+        <SegmentedControl<SortMode>
+          label="Sort"
+          options={SORT_OPTIONS}
+          stackUntilLarge
+          value={sort}
+          onChange={onSortChange}
+        />
+      </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button
-            className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b]"
-            onClick={onSelectAll}
-            type="button"
-          >
-            Select page {totalCount}
-          </button>
-          <button
-            className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#5d6962] transition hover:border-[#176f5b] hover:text-[#176f5b] disabled:cursor-not-allowed disabled:opacity-45"
-            disabled={!hasSelection}
-            onClick={onClear}
-            type="button"
-          >
-            Clear
-          </button>
-          {hasSelection ? (
-            <details className="group relative">
-              <summary className="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-md bg-[#176f5b] px-4 text-sm font-semibold text-white transition hover:bg-[#115744] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] [&::-webkit-details-marker]:hidden">
-                Export
-                <span aria-hidden="true" className="text-xs transition group-open:rotate-180">
-                  v
+      {hasResults ? (
+        <div className="border-t border-[#e4ebe6] px-3 py-2.5">
+          <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-semibold">
+              <span className="text-[#25302a]">
+                Showing {firstVisible}-{lastVisible} of {resultCount}
+              </span>
+              {hasSelection ? <span className="text-[#65716a]">{selectedCount} selected</span> : null}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 xl:justify-end">
+              <label className="flex items-center gap-2 text-sm font-semibold text-[#405047]" htmlFor="page-size">
+                Per page
+                <select
+                  className="h-10 rounded-md border border-[#c8d3cc] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+                  id="page-size"
+                  onChange={(event) => onPageSizeChange(parsePageSize(event.target.value))}
+                  value={pageSize}
+                >
+                  {PAGE_SIZE_OPTIONS.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <div className="grid grid-cols-[auto_1fr_auto] items-center overflow-hidden rounded-md border border-[#c8d3cc] bg-white">
+                <button
+                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  disabled={currentPage <= 1}
+                  onClick={() => onPageChange(currentPage - 1)}
+                  type="button"
+                >
+                  Prev
+                </button>
+                <span className="border-x border-[#c8d3cc] px-3 text-center text-sm font-semibold text-[#405047]">
+                  {currentPage}/{pageCount}
                 </span>
-              </summary>
-              <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#c8d3cc] bg-white shadow-lg">
-                {EXPORT_OPTIONS.map((option) => (
+                <button
+                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  disabled={currentPage >= pageCount}
+                  onClick={() => onPageChange(currentPage + 1)}
+                  type="button"
+                >
+                  Next
+                </button>
+              </div>
+
+              <button
+                aria-label={`Select all ${visibleCount} papers on this page`}
+                className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b]"
+                onClick={onSelectAll}
+                type="button"
+              >
+                Select {visibleCount}
+              </button>
+              {hasSelection ? (
+                <>
                   <button
-                    className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#eef5f0] hover:text-[#176f5b]"
-                    key={option.value}
-                    onClick={(event) => {
-                      onExport(option.value);
-                      event.currentTarget.closest("details")?.removeAttribute("open");
-                    }}
+                    className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#5d6962] transition hover:border-[#176f5b] hover:text-[#176f5b]"
+                    onClick={onClear}
                     type="button"
                   >
-                    {option.label}
+                    Clear
                   </button>
-                ))}
-              </div>
-            </details>
-          ) : (
-            <button
-              className="min-h-10 cursor-not-allowed rounded-md bg-[#8aa39a] px-4 text-sm font-semibold text-white"
-              disabled
-              type="button"
-            >
-              Export
-            </button>
-          )}
+                  <details className="group relative">
+                    <summary
+                      aria-label="Export selected papers"
+                      className="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-md bg-[#176f5b] px-4 text-sm font-semibold text-white transition hover:bg-[#115744] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] [&::-webkit-details-marker]:hidden"
+                    >
+                      Export
+                      <span aria-hidden="true" className="text-xs transition group-open:rotate-180">
+                        v
+                      </span>
+                    </summary>
+                    <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#c8d3cc] bg-white shadow-lg">
+                      {EXPORT_OPTIONS.map((option) => (
+                        <button
+                          className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#eef5f0] hover:text-[#176f5b]"
+                          key={option.value}
+                          onClick={(event) => {
+                            onExport(option.value);
+                            event.currentTarget.closest("details")?.removeAttribute("open");
+                          }}
+                          type="button"
+                        >
+                          {option.label}
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                </>
+              ) : null}
+            </div>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }
