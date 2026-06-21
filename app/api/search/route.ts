@@ -1,33 +1,14 @@
 import { DEFAULT_VENUE_KEYS, VENUES, type Venue } from "@/app/lib/venues";
+import type {
+  Paper,
+  SearchField,
+  SearchPayload,
+  SortMode,
+  SourceName,
+} from "@/app/papers/types";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
-
-type SearchField = "all" | "title" | "abstract" | "titleAbstract" | "author";
-type SortMode = "relevance" | "newest" | "citations";
-type SourceName = "OpenAlex" | "Semantic Scholar" | "Paper Digest";
-
-type Paper = {
-  id: string;
-  title: string;
-  abstract: string | null;
-  highlight: string | null;
-  authors: string[];
-  venue: string;
-  venueKey: string;
-  venueLabel: string;
-  area: Venue["area"];
-  rank: Venue["rank"];
-  year: number | null;
-  publicationDate: string | null;
-  citationCount: number;
-  influentialCitationCount: number | null;
-  url: string | null;
-  pdfUrl: string | null;
-  doi: string | null;
-  source: SourceName;
-  score: number;
-};
 
 type OpenAlexWork = {
   id?: string;
@@ -91,23 +72,6 @@ type PaperDigestPaper = {
 type PaperDigestRecord = {
   paper: PaperDigestPaper;
   venue: Venue;
-};
-
-type SearchResponse = {
-  papers: Paper[];
-  meta: {
-    query: string;
-    field: SearchField;
-    sort: SortMode;
-    selectedVenues: string[];
-    fromDate: string;
-    toDate: string;
-    includeKeywords: string[];
-    excludeKeywords: string[];
-    maxResults: number;
-    sourceCounts: Record<SourceName, number>;
-    errors: string[];
-  };
 };
 
 const FIELD_WEIGHTS: Record<SearchField, Record<"title" | "abstract" | "author", number>> = {
@@ -198,7 +162,7 @@ export async function GET(request: Request) {
         sourceCounts: { OpenAlex: 0, "Semantic Scholar": 0, "Paper Digest": 0 },
         errors: [],
       },
-    } satisfies SearchResponse);
+    } satisfies SearchPayload);
   }
 
   const selectedVenueSet = new Set(selectedVenues);
@@ -274,7 +238,7 @@ export async function GET(request: Request) {
       sourceCounts,
       errors,
     },
-  } satisfies SearchResponse);
+  } satisfies SearchPayload);
 }
 
 async function searchOpenAlex(
