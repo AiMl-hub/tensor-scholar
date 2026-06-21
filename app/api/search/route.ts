@@ -1207,8 +1207,16 @@ function decodeHtmlEntities(value: string) {
       apos: "'",
       gt: ">",
       lt: "<",
+      mdash: "-",
+      ndash: "-",
       nbsp: " ",
+      reg: "(R)",
+      rsquo: "'",
+      lsquo: "'",
       quot: '"',
+      rdquo: '"',
+      ldquo: '"',
+      times: "x",
     };
     const normalized = code.toLowerCase();
     if (named[normalized]) {
@@ -1665,7 +1673,83 @@ function cleanQuery(value: string) {
 }
 
 function cleanTitle(value: string) {
-  return value.replace(/\s+/g, " ").trim();
+  return decodeHtmlEntities(value)
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<sup>\s*([^<]+?)\s*<\/sup>/gi, (_, content: string) => toSuperscript(content))
+    .replace(/<sub>\s*([^<]+?)\s*<\/sub>/gi, (_, content: string) => toSubscript(content))
+    .replace(/\$\s*\^\s*\{([^}]+)\}\s*\$/g, (_, content: string) => toSuperscript(content))
+    .replace(/\$\s*\^\s*([A-Za-z0-9+\-=()]+)\s*\$/g, (_, content: string) => toSuperscript(content))
+    .replace(/\$\s*_\s*\{([^}]+)\}\s*\$/g, (_, content: string) => toSubscript(content))
+    .replace(/\$\s*_\s*([A-Za-z0-9+\-=()]+)\s*\$/g, (_, content: string) => toSubscript(content))
+    .replace(/\$([^$]+)\$/g, "$1")
+    .replace(/\\textit\{([^}]+)\}/g, "$1")
+    .replace(/\\textbf\{([^}]+)\}/g, "$1")
+    .replace(/\\mathrm\{([^}]+)\}/g, "$1")
+    .replace(/\\mathit\{([^}]+)\}/g, "$1")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function toSuperscript(value: string) {
+  const superscript: Record<string, string> = {
+    "0": "⁰",
+    "1": "¹",
+    "2": "²",
+    "3": "³",
+    "4": "⁴",
+    "5": "⁵",
+    "6": "⁶",
+    "7": "⁷",
+    "8": "⁸",
+    "9": "⁹",
+    "+": "⁺",
+    "-": "⁻",
+    "=": "⁼",
+    "(": "⁽",
+    ")": "⁾",
+    n: "ⁿ",
+    i: "ⁱ",
+  };
+  return value.replace(/\s+/g, "").replace(/./g, (character) => superscript[character] ?? character);
+}
+
+function toSubscript(value: string) {
+  const subscript: Record<string, string> = {
+    "0": "₀",
+    "1": "₁",
+    "2": "₂",
+    "3": "₃",
+    "4": "₄",
+    "5": "₅",
+    "6": "₆",
+    "7": "₇",
+    "8": "₈",
+    "9": "₉",
+    "+": "₊",
+    "-": "₋",
+    "=": "₌",
+    "(": "₍",
+    ")": "₎",
+    a: "ₐ",
+    e: "ₑ",
+    h: "ₕ",
+    i: "ᵢ",
+    j: "ⱼ",
+    k: "ₖ",
+    l: "ₗ",
+    m: "ₘ",
+    n: "ₙ",
+    o: "ₒ",
+    p: "ₚ",
+    r: "ᵣ",
+    s: "ₛ",
+    t: "ₜ",
+    u: "ᵤ",
+    v: "ᵥ",
+    x: "ₓ",
+  };
+  return value.replace(/\s+/g, "").replace(/./g, (character) => subscript[character] ?? character);
 }
 
 function normalizeDoi(value: string | null) {
