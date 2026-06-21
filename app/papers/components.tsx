@@ -115,7 +115,7 @@ export function SearchPanel({
               <Image
                 alt=""
                 aria-hidden="true"
-                className="h-10 w-10 shrink-0 rounded-md shadow-[4px_4px_0_#b8eadc] sm:h-11 sm:w-11"
+                className="h-10 w-10 shrink-0 sm:h-11 sm:w-11"
                 height={40}
                 src="/favicon.svg"
                 width={40}
