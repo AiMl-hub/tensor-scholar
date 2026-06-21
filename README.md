@@ -4,6 +4,8 @@ A responsive Vinext/React webpage for searching machine learning, computer
 vision, NLP, and AI conference papers by title, abstract, or author across an
 adjustable date window.
 
+Deployed: https://tensorscholar.vercel.app/
+
 The search route queries Paper Digest, OpenAlex, and Semantic Scholar, filters
 results to the curated A*/A-style venue catalog in `app/lib/venues.ts`, and
 re-ranks with a hybrid lexical, recency, citation, venue-score, and source
