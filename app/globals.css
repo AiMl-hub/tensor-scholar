@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f8f4;
+  --background: #ffffff;
   --foreground: #1b1c1a;
 }
 
@@ -19,8 +19,7 @@ body {
 }
 
 .research-page {
-  background:
-    linear-gradient(180deg, #eef6f0 0%, #f6f8f4 48%, #f8faf6 100%);
+  background: #ffffff;
 }
 
 .research-hero {
