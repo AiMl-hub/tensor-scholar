@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tensor Scholar",
+  title: "Finding Papers",
   description:
-    "Search recent machine learning, computer vision, NLP, and AI conference papers.",
+    "Dive into recent conference papers and surface the good ones.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#176f5b",
+  themeColor: "#0f6f7a",
 };
 
 export default function RootLayout({
