@@ -109,7 +109,7 @@ export function SearchPanel({
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-[#7f6541]">
-              A*/A conference search
+              search Top AI conferences
             </p>
             <div className="mt-2 flex items-center gap-3">
               <Image
@@ -124,9 +124,6 @@ export function SearchPanel({
                 Tensor Scholar
               </h1>
             </div>
-            <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#526157]">
-              Find the papers that make your next idea click.
-            </p>
           </div>
         </div>
 
