@@ -944,14 +944,6 @@ function PaperResult({
               {paper.year ? (
                 <Badge className="border-[#c9d4cc] bg-[#f4f7f2] text-[#435047]">{String(paper.year)}</Badge>
               ) : null}
-              {paper.doi ? (
-                <BadgeLink
-                  className="border-[#c9d4cc] bg-[#f4f7f2] text-[#176f5b] hover:border-[#176f5b]"
-                  href={`https://doi.org/${paper.doi}`}
-                >
-                  DOI
-                </BadgeLink>
-              ) : null}
             </div>
           </div>
 
@@ -985,19 +977,6 @@ function PaperResult({
           </p>
         </div>
       ) : null}
-
-      {paper.pdfUrl ? (
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
-          <a
-            className="rounded-md border border-[#c8d3cc] px-2 py-1 text-[#176f5b] hover:border-[#176f5b]"
-            href={paper.pdfUrl}
-            rel="noreferrer"
-            target="_blank"
-          >
-            PDF
-          </a>
-        </div>
-      ) : null}
     </article>
   );
 }
@@ -1007,27 +986,6 @@ function Badge({ children, className }: { children: React.ReactNode; className: 
     <span className={`rounded-md border px-2 py-1 text-xs font-semibold ${className}`}>
       {children}
     </span>
-  );
-}
-
-function BadgeLink({
-  children,
-  className,
-  href,
-}: {
-  children: React.ReactNode;
-  className: string;
-  href: string;
-}) {
-  return (
-    <a
-      className={`rounded-md border px-2 py-1 text-xs font-semibold transition ${className}`}
-      href={href}
-      rel="noreferrer"
-      target="_blank"
-    >
-      {children}
-    </a>
   );
 }
 
