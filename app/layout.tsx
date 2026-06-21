@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Finding Papers",
+  title: "Finding Codie",
   description:
-    "Dive into recent conference papers and surface the good ones.",
+    "Dive deeper. Catch what matters. Code what comes next.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
