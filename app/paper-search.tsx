@@ -885,10 +885,12 @@ function SelectionToolbar({
           >
             Clear
           </button>
-          <label className="flex items-center gap-2 text-sm font-semibold text-[#405047]" htmlFor="export-format">
-            Export as
+          <div className="grid grid-cols-[minmax(150px,1fr)_auto] overflow-hidden rounded-md border border-[#c8d3cc] bg-white">
+            <label className="sr-only" htmlFor="export-format">
+              Export format
+            </label>
             <select
-              className="h-10 rounded-md border border-[#c8d3cc] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+              className="h-10 min-w-0 border-0 bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:ring-2 focus:ring-inset focus:ring-[#93d7c0]"
               id="export-format"
               onChange={(event) => onExportFormatChange(event.target.value as ExportFormat)}
               value={exportFormat}
@@ -899,15 +901,15 @@ function SelectionToolbar({
                 </option>
               ))}
             </select>
-          </label>
-          <button
-            className="min-h-10 rounded-md bg-[#176f5b] px-3 text-sm font-semibold text-white transition hover:bg-[#115744] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
-            disabled={!hasSelection}
-            onClick={() => onExport(exportFormat)}
-            type="button"
-          >
-            Export
-          </button>
+            <button
+              className="min-h-10 border-l border-[#c8d3cc] bg-[#176f5b] px-3 text-sm font-semibold text-white transition hover:bg-[#115744] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
+              disabled={!hasSelection}
+              onClick={() => onExport(exportFormat)}
+              type="button"
+            >
+              Export
+            </button>
+          </div>
         </div>
       </div>
     </div>
