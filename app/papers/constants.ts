@@ -51,9 +51,9 @@ export const SAMPLE_QUERIES = [
 ];
 
 export const AREA_STYLES: Record<VenueArea, string> = {
-  ml: "border-blue-200 bg-blue-50 text-blue-950",
-  cv: "border-sky-200 bg-sky-50 text-sky-950",
-  nlp: "border-indigo-200 bg-indigo-50 text-indigo-950",
-  ai: "border-yellow-200 bg-yellow-50 text-yellow-950",
-  medical: "border-cyan-200 bg-cyan-50 text-cyan-950",
+  ml: "border-emerald-200 bg-emerald-50 text-emerald-900",
+  cv: "border-cyan-200 bg-cyan-50 text-cyan-900",
+  nlp: "border-rose-200 bg-rose-50 text-rose-900",
+  ai: "border-amber-200 bg-amber-50 text-amber-950",
+  medical: "border-blue-200 bg-blue-50 text-blue-950",
 };
