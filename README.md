@@ -1,4 +1,4 @@
-# Finding Codie
+# Tensor Scholar
 
 A responsive Vinext/React webpage for searching machine learning, computer
 vision, NLP, AI, and medical imaging conference papers by title, abstract, or

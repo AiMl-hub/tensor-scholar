@@ -109,7 +109,7 @@ export function SearchPanel({
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase text-[#7f6541]">
-              A*/A Conference Papers in AI
+              A*/A conference search
             </p>
             <div className="mt-2 flex items-center gap-3">
               <Image
@@ -121,11 +121,11 @@ export function SearchPanel({
                 width={40}
               />
               <h1 className="nes-title text-3xl text-[#15251d] sm:text-4xl">
-                Finding Codie
+                Tensor Scholar
               </h1>
             </div>
             <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#526157]">
-              Dive. Catch. Code.
+              Find the papers that make your next idea click.
             </p>
           </div>
         </div>
@@ -178,7 +178,7 @@ export function SearchPanel({
         </form>
 
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase text-[#7f6541]">Start with a signal</p>
+          <p className="mb-2 text-xs font-semibold uppercase text-[#7f6541]">Start with a spark</p>
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
               <button
