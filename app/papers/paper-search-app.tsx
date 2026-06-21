@@ -251,7 +251,7 @@ export default function PaperSearchApp() {
     : [query, includeKeywords].join(" ");
 
   return (
-    <main className="min-h-screen bg-[#f7f8f4] text-[#1b1c1a]">
+    <main className="research-page min-h-screen text-[#1b1c1a]">
       <SearchPanel
         excludeKeywords={excludeKeywords}
         field={field}
