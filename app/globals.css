@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f8f4;
-  --foreground: #1b1c1a;
+  --background: #f8f5fb;
+  --foreground: #211b2b;
 }
 
 @theme inline {
@@ -20,13 +20,13 @@ body {
 
 .research-page {
   background:
-    linear-gradient(180deg, #eef6f0 0%, #f6f8f4 48%, #f8faf6 100%);
+    linear-gradient(180deg, #f1edf8 0%, #f8f5fb 48%, #fbfaf7 100%);
 }
 
 .research-hero {
   background:
-    linear-gradient(rgba(238, 246, 240, 0.96), rgba(246, 248, 244, 0.96)),
-    radial-gradient(circle at 12px 12px, rgba(23, 111, 91, 0.07) 1px, transparent 1.5px);
+    linear-gradient(rgba(241, 237, 248, 0.96), rgba(248, 245, 251, 0.96)),
+    radial-gradient(circle at 12px 12px, rgba(109, 75, 195, 0.08) 1px, transparent 1.5px);
   background-size: auto, 24px 24px;
 }
 
@@ -35,7 +35,7 @@ body {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.05;
-  text-shadow: 2px 2px 0 #93d7c0;
+  text-shadow: 2px 2px 0 #c9b8ff;
   text-rendering: geometricPrecision;
 }
 

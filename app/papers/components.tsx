@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Fragment, type FormEvent, type ReactNode } from "react";
 import { AREA_LABELS, VENUES, type Venue, type VenueArea } from "@/app/lib/venues";
 import {
@@ -104,7 +103,7 @@ export function SearchPanel({
   windowPreset,
 }: SearchPanelProps) {
   return (
-    <section className="research-hero border-b border-[#cdd8cf]">
+    <section className="research-hero border-b border-[#d8d0e8]">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-7 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -112,31 +111,30 @@ export function SearchPanel({
               A*/A conference search
             </p>
             <div className="mt-2 flex items-center gap-3">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element -- Tiny SVG logo; next/image triggers vinext dev HMR issues here. */}
+              <img
                 alt=""
                 aria-hidden="true"
-                className="h-10 w-10 shrink-0 rounded-md shadow-[4px_4px_0_#b8eadc] sm:h-11 sm:w-11"
-                height={40}
+                className="h-10 w-10 shrink-0 rounded-md shadow-[4px_4px_0_#d8ccff] sm:h-11 sm:w-11"
                 src="/favicon.svg"
-                width={40}
               />
-              <h1 className="nes-title text-3xl text-[#15251d] sm:text-4xl">
+              <h1 className="nes-title text-3xl text-[#21162f] sm:text-4xl">
                 Tensor Scholar
               </h1>
             </div>
-            <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#526157]">
+            <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[#5d5369]">
               Find the papers that make your next idea click.
             </p>
           </div>
         </div>
 
         <form className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto]" onSubmit={onSubmit}>
-          <div className="flex min-h-12 w-full min-w-0 overflow-hidden rounded-xl border-2 border-[#aebfb3] bg-white shadow-[4px_4px_0_#ccecdf] transition focus-within:border-[#1d8a6c] focus-within:ring-2 focus-within:ring-[#93d7c0]">
+          <div className="flex min-h-12 w-full min-w-0 overflow-hidden rounded-xl border-2 border-[#c9c0d8] bg-white shadow-[4px_4px_0_#e1d9ff] transition focus-within:border-[#6d4bc3] focus-within:ring-2 focus-within:ring-[#c9b8ff]">
             <label className="sr-only" htmlFor="search-field">
               Search field
             </label>
             <select
-              className="min-h-12 w-[120px] shrink-0 border-r border-[#c8d3cc] bg-[#fff9e8] px-3 text-sm font-semibold text-[#25302a] outline-none sm:w-[150px]"
+              className="min-h-12 w-[120px] shrink-0 border-r border-[#d8d0e8] bg-[#fbf3ff] px-3 text-sm font-semibold text-[#2d2538] outline-none sm:w-[150px]"
               id="search-field"
               onChange={(event) => onFieldChange(event.target.value as SearchField)}
               value={field}
@@ -159,7 +157,7 @@ export function SearchPanel({
             />
           </div>
           <button
-            className="h-12 rounded-xl bg-[#176f5b] px-6 font-semibold text-white shadow-[4px_4px_0_#bfded1] transition hover:-translate-y-0.5 hover:bg-[#115744] hover:shadow-[5px_5px_0_#bfded1] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] disabled:cursor-not-allowed disabled:bg-[#8aa39a]"
+            className="h-12 rounded-xl bg-[#6d4bc3] px-6 font-semibold text-white shadow-[4px_4px_0_#d8ccff] transition hover:-translate-y-0.5 hover:bg-[#55359b] hover:shadow-[5px_5px_0_#d8ccff] focus:outline-none focus:ring-2 focus:ring-[#c9b8ff] disabled:cursor-not-allowed disabled:bg-[#9b8db9]"
             disabled={status === "loading"}
             type="submit"
           >
@@ -182,7 +180,7 @@ export function SearchPanel({
           <div className="flex flex-wrap gap-2">
             {SAMPLE_QUERIES.map((sample) => (
               <button
-                className="rounded-lg border border-[#b8c7be] bg-white px-3 py-2 text-sm font-semibold text-[#344139] shadow-[2px_2px_0_#d9e4dd] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#eef8f2] hover:text-[#176f5b]"
+                className="rounded-lg border border-[#c9c0d8] bg-white px-3 py-2 text-sm font-semibold text-[#44384f] shadow-[2px_2px_0_#e8e1f6] transition hover:-translate-y-0.5 hover:border-[#6d4bc3] hover:bg-[#f3effb] hover:text-[#6d4bc3]"
                 key={sample}
                 onClick={() => onSampleQuery(sample)}
                 type="button"
@@ -207,17 +205,17 @@ export function SourceSidebar({
   selectedVenuesCount,
 }: SourceSidebarProps) {
   return (
-    <aside className="h-fit rounded-xl border border-[#d8dccd] bg-[#fbfdf9] p-4 shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <aside className="h-fit rounded-xl border border-[#ded7e9] bg-[#fdfcff] p-4 shadow-[0_10px_28px_rgba(74,50,111,0.08)]">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h2 className="text-sm font-semibold uppercase text-[#46534a]">Sources</h2>
-          <p className="mt-1 rounded-full bg-[#eef8f2] px-2 py-1 text-xs font-semibold text-[#65716a]">
+          <h2 className="text-sm font-semibold uppercase text-[#4f455e]">Sources</h2>
+          <p className="mt-1 rounded-full bg-[#f3effb] px-2 py-1 text-xs font-semibold text-[#655a73]">
             {selectedVenuesCount}/{VENUES.length} venues
           </p>
         </div>
         <div className="flex gap-2">
           <button
-            className="rounded-md border border-[#cbd6d0] bg-white px-2 py-1 text-xs font-semibold text-[#47534c] shadow-[2px_2px_0_#edf3ef] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:text-[#176f5b]"
+            className="rounded-md border border-[#d5cde2] bg-white px-2 py-1 text-xs font-semibold text-[#51465f] shadow-[2px_2px_0_#f0ebf8] transition hover:-translate-y-0.5 hover:border-[#6d4bc3] hover:text-[#6d4bc3]"
             onClick={onResetVenues}
             type="button"
           >
@@ -236,12 +234,12 @@ export function SourceSidebar({
           const canClearArea = areaSelectedCount > 0 && areaSelectedCount < selectedVenuesCount;
 
           return (
-            <section className="rounded-lg border border-[#edf1e8] bg-white/70 p-2" key={area}>
+            <section className="rounded-lg border border-[#eeeaf5] bg-white/70 p-2" key={area}>
               <div className="mb-2 flex items-center justify-between gap-2">
-                <h3 className="text-sm font-semibold text-[#25302a]">{AREA_LABELS[area]}</h3>
+                <h3 className="text-sm font-semibold text-[#2d2538]">{AREA_LABELS[area]}</h3>
                 <div className="flex items-center gap-2">
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#eef8f2] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#6d4bc3] hover:bg-[#f3effb] hover:text-[#4d2e8f] disabled:cursor-not-allowed disabled:text-[#9f98aa]"
                     disabled={allAreaSelected}
                     onClick={() => onSelectArea(area)}
                     type="button"
@@ -249,7 +247,7 @@ export function SourceSidebar({
                     Select
                   </button>
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#fff2e7] hover:text-[#7a4122] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#6d4bc3] hover:bg-[#fff2e7] hover:text-[#7a4122] disabled:cursor-not-allowed disabled:text-[#9f98aa]"
                     disabled={!canClearArea}
                     onClick={() => onClearArea(area)}
                     title={canClearArea ? undefined : "Keep at least one venue selected"}
@@ -268,8 +266,8 @@ export function SourceSidebar({
                       className={[
                         "rounded-md border px-2.5 py-1.5 text-xs font-semibold transition hover:-translate-y-0.5",
                         active
-                          ? `${AREA_STYLES[venue.area]} shadow-[2px_2px_0_rgba(23,111,91,0.16)]`
-                          : "border-[#d6ddd8] bg-[#fafbf8] text-[#626d66] hover:border-[#176f5b]",
+                          ? `${AREA_STYLES[venue.area]} shadow-[2px_2px_0_rgba(109,75,195,0.16)]`
+                          : "border-[#ded7e9] bg-[#fbfafc] text-[#6b6075] hover:border-[#6d4bc3]",
                       ].join(" ")}
                       key={venue.key}
                       onClick={() => onToggleVenue(venue.key)}
@@ -318,9 +316,9 @@ export function ResultsToolbar({
         : "Ready for a paper trail";
 
   return (
-    <div className="mb-4 rounded-xl border border-[#d8dccd] bg-[#fbfdf9] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <div className="mb-4 rounded-xl border border-[#ded7e9] bg-[#fdfcff] shadow-[0_10px_28px_rgba(74,50,111,0.08)]">
       <div className="flex flex-col gap-3 p-3 lg:flex-row lg:items-center lg:justify-between">
-        <p className="text-sm font-semibold text-[#25302a]">{statusText}</p>
+        <p className="text-sm font-semibold text-[#2d2538]">{statusText}</p>
         <SegmentedControl<SortMode>
           label="Sort"
           onChange={onSortChange}
@@ -331,20 +329,20 @@ export function ResultsToolbar({
       </div>
 
       {hasResults ? (
-        <div className="border-t border-[#e8eadc] px-3 py-2.5">
+        <div className="border-t border-[#ece6f5] px-3 py-2.5">
           <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-semibold">
-              <span className="text-[#25302a]">
+              <span className="text-[#2d2538]">
                 Showing {firstVisible}-{lastVisible} of {resultCount}
               </span>
-              {hasSelection ? <span className="text-[#65716a]">{selectedCount} selected</span> : null}
+              {hasSelection ? <span className="text-[#655a73]">{selectedCount} selected</span> : null}
             </div>
 
             <div className="flex flex-wrap items-center gap-2 xl:justify-end">
-              <label className="flex items-center gap-2 text-sm font-semibold text-[#405047]" htmlFor="page-size">
+              <label className="flex items-center gap-2 text-sm font-semibold text-[#51465f]" htmlFor="page-size">
                 Per page
                 <select
-                  className="h-10 rounded-md border border-[#c8d3cc] bg-white px-3 text-sm font-semibold text-[#25302a] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+                  className="h-10 rounded-md border border-[#d5cde2] bg-white px-3 text-sm font-semibold text-[#2d2538] outline-none transition focus:border-[#6d4bc3] focus:ring-2 focus:ring-[#c9b8ff]"
                   id="page-size"
                   onChange={(event) => onPageSizeChange(parsePageSize(event.target.value))}
                   value={pageSize}
@@ -357,20 +355,20 @@ export function ResultsToolbar({
                 </select>
               </label>
 
-              <div className="grid grid-cols-[auto_1fr_auto] items-center overflow-hidden rounded-md border border-[#c8d3cc] bg-white">
+              <div className="grid grid-cols-[auto_1fr_auto] items-center overflow-hidden rounded-md border border-[#d5cde2] bg-white">
                 <button
-                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  className="min-h-10 px-3 text-sm font-semibold text-[#6d4bc3] transition hover:bg-[#f5f0ff] disabled:cursor-not-allowed disabled:text-[#9f98aa]"
                   disabled={currentPage <= 1}
                   onClick={() => onPageChange(currentPage - 1)}
                   type="button"
                 >
                   Prev
                 </button>
-                <span className="border-x border-[#c8d3cc] px-3 text-center text-sm font-semibold text-[#405047]">
+                <span className="border-x border-[#d5cde2] px-3 text-center text-sm font-semibold text-[#51465f]">
                   {currentPage}/{pageCount}
                 </span>
                 <button
-                  className="min-h-10 px-3 text-sm font-semibold text-[#176f5b] transition hover:bg-[#eef5f0] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                  className="min-h-10 px-3 text-sm font-semibold text-[#6d4bc3] transition hover:bg-[#f5f0ff] disabled:cursor-not-allowed disabled:text-[#9f98aa]"
                   disabled={currentPage >= pageCount}
                   onClick={() => onPageChange(currentPage + 1)}
                   type="button"
@@ -381,7 +379,7 @@ export function ResultsToolbar({
 
               <button
                 aria-label={`Select all ${visibleCount} papers on this page`}
-                  className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#176f5b] transition hover:border-[#176f5b]"
+                  className="min-h-10 rounded-md border border-[#d5cde2] px-3 text-sm font-semibold text-[#6d4bc3] transition hover:border-[#6d4bc3]"
                 onClick={onSelectAll}
                 type="button"
               >
@@ -390,7 +388,7 @@ export function ResultsToolbar({
               {hasSelection ? (
                 <>
                   <button
-                    className="min-h-10 rounded-md border border-[#c8d3cc] px-3 text-sm font-semibold text-[#5d6962] transition hover:border-[#176f5b] hover:text-[#176f5b]"
+                    className="min-h-10 rounded-md border border-[#d5cde2] px-3 text-sm font-semibold text-[#62556f] transition hover:border-[#6d4bc3] hover:text-[#6d4bc3]"
                     onClick={onClear}
                     type="button"
                   >
@@ -399,17 +397,17 @@ export function ResultsToolbar({
                   <details className="group relative">
                     <summary
                       aria-label="Export selected papers"
-                      className="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-md bg-[#176f5b] px-4 text-sm font-semibold text-white transition hover:bg-[#115744] focus:outline-none focus:ring-2 focus:ring-[#93d7c0] [&::-webkit-details-marker]:hidden"
+                      className="flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-md bg-[#6d4bc3] px-4 text-sm font-semibold text-white transition hover:bg-[#55359b] focus:outline-none focus:ring-2 focus:ring-[#c9b8ff] [&::-webkit-details-marker]:hidden"
                     >
                       Export
                       <span aria-hidden="true" className="text-xs transition group-open:rotate-180">
                         v
                       </span>
                     </summary>
-                    <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#c8d3cc] bg-white shadow-lg">
+                    <div className="absolute right-0 z-30 mt-2 w-48 overflow-hidden rounded-md border border-[#d5cde2] bg-white shadow-lg">
                       {EXPORT_OPTIONS.map((option) => (
                         <button
-                          className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#25302a] transition hover:bg-[#eef5f0] hover:text-[#176f5b]"
+                          className="block w-full px-3 py-2 text-left text-sm font-semibold text-[#2d2538] transition hover:bg-[#f5f0ff] hover:text-[#6d4bc3]"
                           key={option.value}
                           onClick={(event) => {
                             onExport(option.value);
@@ -440,8 +438,8 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
   return (
     <article
       className={[
-        "relative overflow-hidden rounded-xl border bg-[#fffef9] p-4 pl-5 shadow-[0_8px_24px_rgba(34,60,47,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(34,60,47,0.1)]",
-        isSelected ? "border-[#176f5b] ring-2 ring-[#93d7c0]" : "border-[#d8dccd]",
+        "relative overflow-hidden rounded-xl border bg-[#fffefd] p-4 pl-5 shadow-[0_8px_24px_rgba(74,50,111,0.07)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(74,50,111,0.1)]",
+        isSelected ? "border-[#6d4bc3] ring-2 ring-[#c9b8ff]" : "border-[#ded7e9]",
       ].join(" ")}
     >
       <span
@@ -451,10 +449,10 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div className="min-w-0">
           <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <label className="flex w-fit items-center gap-2 rounded-md border border-[#c8d3cc] bg-white px-2.5 py-1.5 text-xs font-semibold text-[#25302a] shadow-[2px_2px_0_#edf3ef]">
+            <label className="flex w-fit items-center gap-2 rounded-md border border-[#d5cde2] bg-white px-2.5 py-1.5 text-xs font-semibold text-[#2d2538] shadow-[2px_2px_0_#f0ebf8]">
               <input
                 checked={isSelected}
-                className="h-4 w-4 accent-[#176f5b]"
+                className="h-4 w-4 accent-[#6d4bc3]"
                 onChange={() => onToggleSelection(paper)}
                 type="checkbox"
               />
@@ -466,22 +464,22 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
                 className={
                   paper.rank === "A*"
                     ? "border-[#f2c35b] bg-[#fff3c4] text-[#6a4a00]"
-                    : "border-[#c9d4cc] bg-[#f4f7f2] text-[#435047]"
+                    : "border-[#d5cde2] bg-[#f6f2ff] text-[#51465f]"
                 }
               >
                 {paper.rank}
               </Badge>
               {paper.year ? (
-                <Badge className="border-[#c9d4cc] bg-[#f4f7f2] text-[#435047]">
+                <Badge className="border-[#d5cde2] bg-[#f6f2ff] text-[#51465f]">
                   {String(paper.year)}
                 </Badge>
               ) : null}
             </div>
           </div>
 
-          <h2 className="text-lg font-semibold leading-snug text-[#151a17]">
+          <h2 className="text-lg font-semibold leading-snug text-[#211b2b]">
             {paper.url ? (
-              <a className="hover:text-[#176f5b]" href={paper.url} rel="noreferrer" target="_blank">
+              <a className="hover:text-[#6d4bc3]" href={paper.url} rel="noreferrer" target="_blank">
                 <HighlightedText query={query} text={paper.title} />
               </a>
             ) : (
@@ -489,7 +487,7 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
             )}
           </h2>
 
-          <p className="mt-2 text-sm leading-6 text-[#4f5b54]">
+          <p className="mt-2 text-sm leading-6 text-[#5f5669]">
             {authors}
             {extraAuthors ? `, +${extraAuthors}` : ""}
           </p>
@@ -502,9 +500,9 @@ export function PaperResult({ isSelected, onToggleSelection, paper, query }: Pap
       </div>
 
       {highlight ? (
-        <div className="mt-3 rounded-lg border border-[#c7ded3] bg-[#f4fbf5] px-3 py-2 shadow-[inset_3px_0_0_#9edfd0]">
-          <p className="text-[10px] font-semibold uppercase text-[#176f5b]">Highlight</p>
-          <p className="mt-1 text-sm leading-6 text-[#26352d]">
+        <div className="mt-3 rounded-lg border border-[#d9d0f3] bg-[#f7f3ff] px-3 py-2 shadow-[inset_3px_0_0_#c9b8ff]">
+          <p className="text-[10px] font-semibold uppercase text-[#6d4bc3]">Highlight</p>
+          <p className="mt-1 text-sm leading-6 text-[#2f2939]">
             <HighlightedText query={query} text={highlight} />
           </p>
         </div>
@@ -517,10 +515,10 @@ export function LoadingState() {
   return (
     <div className="space-y-3">
       {[0, 1, 2].map((item) => (
-        <div className="rounded-xl border border-[#d8dccd] bg-[#fffef9] p-4 shadow-sm" key={item}>
+        <div className="rounded-xl border border-[#ded7e9] bg-[#fffefd] p-4 shadow-sm" key={item}>
           <div className="h-4 w-40 rounded-md bg-[#f6e8bf]" />
-          <div className="mt-4 h-5 w-4/5 rounded-md bg-[#d7ece2]" />
-          <div className="mt-3 h-4 w-2/3 rounded-md bg-[#e8f1ed]" />
+          <div className="mt-4 h-5 w-4/5 rounded-md bg-[#e1d9ff]" />
+          <div className="mt-3 h-4 w-2/3 rounded-md bg-[#eee9f7]" />
           <div className="mt-4 h-16 rounded-md bg-[#f7f2df]" />
         </div>
       ))}
@@ -530,7 +528,7 @@ export function LoadingState() {
 
 export function EmptyState() {
   return (
-    <div className="rounded-xl border border-[#d8dccd] bg-[#fbfdf9] p-6 text-sm text-[#4f5b54] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
+    <div className="rounded-xl border border-[#ded7e9] bg-[#fdfcff] p-6 text-sm text-[#5f5669] shadow-[0_10px_28px_rgba(74,50,111,0.08)]">
       No papers surfaced yet for this trail. Try a wider source mix or a softer keyword.
     </div>
   );
@@ -546,12 +544,12 @@ export function ErrorState({ message }: { message: string }) {
 
 export function AppFooter() {
   return (
-    <footer className="border-t border-[#cdd8cf] bg-[#eef5ef]">
-      <div className="nes-title mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-[#18211c] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <footer className="border-t border-[#d8d0e8] bg-[#f1edf8]">
+      <div className="nes-title mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-[#241c2d] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <p>Copyright 2026 Mai A. Shaaban</p>
         <div className="flex flex-wrap gap-3">
           <a
-            className="text-[#176f5b] hover:text-[#0f4c3d]"
+            className="text-[#6d4bc3] hover:text-[#4d2e8f]"
             href="https://www.linkedin.com/in/maiahmed"
             rel="noreferrer"
             target="_blank"
@@ -559,7 +557,7 @@ export function AppFooter() {
             LinkedIn
           </a>
           <a
-            className="text-[#176f5b] hover:text-[#0f4c3d]"
+            className="text-[#6d4bc3] hover:text-[#4d2e8f]"
             href="https://mai-cs.github.io"
             rel="noreferrer"
             target="_blank"
@@ -593,10 +591,10 @@ function KeywordFilters({
 }) {
   return (
     <div className="grid gap-3 lg:col-span-2 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_160px_150px]">
-      <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="include-keywords">
+      <label className="grid gap-1 text-xs font-semibold uppercase text-[#655a73]" htmlFor="include-keywords">
         Must include
         <input
-          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-medium text-[#25302a] shadow-[2px_2px_0_#e3efe8] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+          className="h-11 rounded-xl border border-[#c9c0d8] bg-white px-3 text-sm font-medium text-[#2d2538] shadow-[2px_2px_0_#e8e1f6] outline-none transition focus:border-[#6d4bc3] focus:ring-2 focus:ring-[#c9b8ff]"
           id="include-keywords"
           onChange={(event) => onIncludeChange(event.target.value)}
           placeholder="agentic, benchmark"
@@ -605,10 +603,10 @@ function KeywordFilters({
         />
       </label>
 
-      <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="exclude-keywords">
+      <label className="grid gap-1 text-xs font-semibold uppercase text-[#655a73]" htmlFor="exclude-keywords">
         Exclude
         <input
-          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-medium text-[#25302a] shadow-[2px_2px_0_#f8dfdf] outline-none transition focus:border-[#b15b65] focus:ring-2 focus:ring-[#f2b6bd]"
+          className="h-11 rounded-xl border border-[#c9c0d8] bg-white px-3 text-sm font-medium text-[#2d2538] shadow-[2px_2px_0_#f2dfe8] outline-none transition focus:border-[#b15b65] focus:ring-2 focus:ring-[#f2b6bd]"
           id="exclude-keywords"
           onChange={(event) => onExcludeChange(event.target.value)}
           placeholder="survey, tutorial"
@@ -617,10 +615,10 @@ function KeywordFilters({
         />
       </label>
 
-      <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="date-window">
+      <label className="grid gap-1 text-xs font-semibold uppercase text-[#655a73]" htmlFor="date-window">
         Date window
         <select
-          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-semibold text-[#25302a] shadow-[2px_2px_0_#e3efe8] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+          className="h-11 rounded-xl border border-[#c9c0d8] bg-white px-3 text-sm font-semibold text-[#2d2538] shadow-[2px_2px_0_#e8e1f6] outline-none transition focus:border-[#6d4bc3] focus:ring-2 focus:ring-[#c9b8ff]"
           id="date-window"
           onChange={(event) => onDateWindowChange(event.target.value as Exclude<DateWindowPreset, "custom">)}
           value={windowPreset === "custom" ? "1y" : windowPreset}
@@ -633,10 +631,10 @@ function KeywordFilters({
         </select>
       </label>
 
-      <label className="grid gap-1 text-xs font-semibold uppercase text-[#65716a]" htmlFor="max-results">
+      <label className="grid gap-1 text-xs font-semibold uppercase text-[#655a73]" htmlFor="max-results">
         Max results
         <select
-          className="h-11 rounded-xl border border-[#b8c7be] bg-white px-3 text-sm font-semibold text-[#25302a] shadow-[2px_2px_0_#e3efe8] outline-none transition focus:border-[#1d8a6c] focus:ring-2 focus:ring-[#93d7c0]"
+          className="h-11 rounded-xl border border-[#c9c0d8] bg-white px-3 text-sm font-semibold text-[#2d2538] shadow-[2px_2px_0_#e8e1f6] outline-none transition focus:border-[#6d4bc3] focus:ring-2 focus:ring-[#c9b8ff]"
           id="max-results"
           onChange={(event) => onMaxResultsChange(parseResultLimit(event.target.value))}
           value={maxResults}
@@ -671,7 +669,7 @@ function SegmentedControl<T extends string>({
   return (
     <div
       aria-label={label}
-      className={`flex w-full max-w-full overflow-hidden rounded-xl border border-[#c8d3cc] bg-white shadow-[2px_2px_0_#edf3ef] ${controlWidthClass}`}
+      className={`flex w-full max-w-full overflow-hidden rounded-xl border border-[#d5cde2] bg-white shadow-[2px_2px_0_#f0ebf8] ${controlWidthClass}`}
     >
       {options.map((option) => {
         const active = option.value === value;
@@ -680,7 +678,7 @@ function SegmentedControl<T extends string>({
             className={[
               "min-h-10 min-w-0 flex-1 truncate whitespace-nowrap px-2.5 text-sm font-semibold transition sm:px-3",
               buttonWidthClass,
-              active ? "bg-[#1d6f5c] text-white" : "text-[#405047] hover:bg-[#fff6db]",
+              active ? "bg-[#6d4bc3] text-white" : "text-[#51465f] hover:bg-[#f5f0ff]",
             ].join(" ")}
             key={option.value}
             onClick={() => onChange(option.value)}
@@ -704,9 +702,9 @@ function Badge({ children, className }: { children: ReactNode; className: string
 
 function SmallStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-[#d9e1dc] bg-white px-3 py-2 shadow-[2px_2px_0_#edf3ef]">
-      <p className="text-[10px] font-semibold uppercase text-[#6a756f]">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-[#1c231f]">{value}</p>
+    <div className="rounded-lg border border-[#ded7e9] bg-white px-3 py-2 shadow-[2px_2px_0_#f0ebf8]">
+      <p className="text-[10px] font-semibold uppercase text-[#71667e]">{label}</p>
+      <p className="mt-1 text-sm font-semibold text-[#241c2d]">{value}</p>
     </div>
   );
 }
