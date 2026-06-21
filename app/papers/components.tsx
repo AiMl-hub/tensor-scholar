@@ -78,20 +78,6 @@ type PaperResultProps = {
   query: string;
 };
 
-const SAMPLE_QUERY_STYLES = [
-  "border-[#f6c36f] bg-[#fff6db] text-[#6b4a08] hover:border-[#d9912c] hover:text-[#8a5600]",
-  "border-[#9edfd0] bg-[#ecfbf6] text-[#0e604f] hover:border-[#1d8a6c] hover:text-[#0d4f40]",
-  "border-[#a7d8f0] bg-[#eff9ff] text-[#145a78] hover:border-[#3aa3c6] hover:text-[#0c4963]",
-  "border-[#f1b5c6] bg-[#fff1f5] text-[#7b2948] hover:border-[#d36f91] hover:text-[#681d3a]",
-];
-
-const SAMPLE_DOT_STYLES = [
-  "bg-[#ef9f39]",
-  "bg-[#1d8a6c]",
-  "bg-[#3aa3c6]",
-  "bg-[#d36f91]",
-];
-
 const AREA_RAIL_STYLES: Record<VenueArea, string> = {
   ml: "bg-emerald-300",
   cv: "bg-cyan-300",
@@ -194,23 +180,13 @@ export function SearchPanel({
         <div>
           <p className="mb-2 text-xs font-semibold uppercase text-[#7f6541]">Start with a spark</p>
           <div className="flex flex-wrap gap-2">
-            {SAMPLE_QUERIES.map((sample, index) => (
+            {SAMPLE_QUERIES.map((sample) => (
               <button
-                className={[
-                  "inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold shadow-[2px_2px_0_#d9e4dd] transition hover:-translate-y-0.5",
-                  SAMPLE_QUERY_STYLES[index % SAMPLE_QUERY_STYLES.length],
-                ].join(" ")}
+                className="rounded-lg border border-[#b8c7be] bg-white px-3 py-2 text-sm font-semibold text-[#344139] shadow-[2px_2px_0_#d9e4dd] transition hover:-translate-y-0.5 hover:border-[#176f5b] hover:bg-[#eef8f2] hover:text-[#176f5b]"
                 key={sample}
                 onClick={() => onSampleQuery(sample)}
                 type="button"
               >
-                <span
-                  aria-hidden="true"
-                  className={[
-                    "h-2 w-2 shrink-0 rounded-sm",
-                    SAMPLE_DOT_STYLES[index % SAMPLE_DOT_STYLES.length],
-                  ].join(" ")}
-                />
                 {sample}
               </button>
             ))}
