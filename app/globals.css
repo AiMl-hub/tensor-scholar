@@ -29,13 +29,28 @@ body {
   background-size: auto, 24px 24px;
 }
 
-.nes-title {
-  font-family: "Super Mario Bros. NES", "Super Mario NES", "Press Start 2P", "Courier New", monospace;
-  font-weight: 700;
+.brand-title {
+  display: inline-block;
+  isolation: isolate;
+  position: relative;
+  font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  font-weight: 800;
   letter-spacing: 0;
   line-height: 1.05;
-  text-shadow: 2px 2px 0 #93d7c0;
+  text-shadow: 1px 1px 0 rgba(147, 215, 192, 0.42);
   text-rendering: geometricPrecision;
+}
+
+.brand-title::after {
+  position: absolute;
+  right: 0.02em;
+  bottom: -0.08em;
+  left: 0.05em;
+  z-index: -1;
+  height: 0.14em;
+  border-radius: 999px;
+  background: rgba(147, 215, 192, 0.62);
+  content: "";
 }
 
 * {

@@ -120,7 +120,7 @@ export function SearchPanel({
                 src="/favicon.svg"
                 width={40}
               />
-              <h1 className="nes-title text-3xl text-[#15251d] sm:text-4xl">
+              <h1 className="brand-title text-3xl text-[#15251d] sm:text-4xl">
                 Tensor Scholar
               </h1>
             </div>
@@ -544,7 +544,7 @@ export function ErrorState({ message }: { message: string }) {
 export function AppFooter() {
   return (
     <footer className="border-t border-[#cdd8cf] bg-[#eef5ef]">
-      <div className="nes-title mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-[#18211c] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm font-semibold text-[#18211c] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <p>Copyright 2026 Mai A. Shaaban</p>
         <div className="flex flex-wrap gap-3">
           <a
