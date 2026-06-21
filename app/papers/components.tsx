@@ -86,6 +86,9 @@ const AREA_RAIL_STYLES: Record<VenueArea, string> = {
   medical: "bg-blue-200/75",
 };
 
+const CATEGORY_ACTION_CLASS =
+  "rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] transition hover:bg-[#fff6db] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f] disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-[#9aa69f]";
+
 export function SearchPanel({
   excludeKeywords,
   field,
@@ -231,6 +234,11 @@ export function SourceSidebar({
           ).length;
           const allAreaSelected = areaSelectedCount === areaVenues.length;
           const canClearArea = areaSelectedCount > 0 && areaSelectedCount < selectedVenuesCount;
+          const clearAreaTitle = canClearArea
+            ? undefined
+            : areaSelectedCount === 0
+              ? "No venues in this category are selected"
+              : "Keep at least one venue selected";
 
           return (
             <section className="rounded-lg border border-[#edf1e8] bg-white/70 p-2" key={area}>
@@ -238,18 +246,19 @@ export function SourceSidebar({
                 <h3 className="text-sm font-semibold text-[#25302a]">{AREA_LABELS[area]}</h3>
                 <div className="flex items-center gap-2">
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#fff6db] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className={CATEGORY_ACTION_CLASS}
                     disabled={allAreaSelected}
                     onClick={() => onSelectArea(area)}
+                    title={allAreaSelected ? "All venues in this category are selected" : undefined}
                     type="button"
                   >
                     Select
                   </button>
                   <button
-                    className="rounded-md px-1.5 py-1 text-xs font-semibold text-[#176f5b] hover:bg-[#fff6db] hover:text-[#0f4c3d] disabled:cursor-not-allowed disabled:text-[#9aa69f]"
+                    className={CATEGORY_ACTION_CLASS}
                     disabled={!canClearArea}
                     onClick={() => onClearArea(area)}
-                    title={canClearArea ? undefined : "Keep at least one venue selected"}
+                    title={clearAreaTitle}
                     type="button"
                   >
                     Unselect
@@ -312,7 +321,7 @@ export function ResultsToolbar({
       ? `${resultCount} papers`
       : status === "loading"
         ? "Searching"
-        : "Ready for a paper trail";
+        : "Ready to search conference papers";
 
   return (
     <div className="mb-4 rounded-xl border border-[#d8dccd] bg-[#fbfdf9] shadow-[0_10px_28px_rgba(34,60,47,0.08)]">
